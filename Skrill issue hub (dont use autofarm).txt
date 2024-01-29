@@ -6820,7 +6820,7 @@ end)
 
 						local ttempo = string.format("%.0f", hours)
 						tempo = ttempo .. ":" .. "0" .. math.floor(scripttime/60%60) .. ":" .. seconds
-						print(tempo)
+						wait(15) print(tempo)
 
 					end
 
