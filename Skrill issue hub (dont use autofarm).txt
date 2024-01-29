@@ -6399,7 +6399,50 @@ end)
 				end
 			end
 
-			
+			local Tab = Window:MakeTab({
+				Name = "Paid 3",
+				Icon = "rbxassetid://4483345998",
+				PremiumOnly = false
+			})
+
+			Tab:AddDropdown({
+				Name = "Timer Notifier",
+				Default = "None",
+				Options = {"None", "Sound", "Webhook"},
+				Callback = function(Value)
+					dropdown3 = Value
+				end   
+			})
+
+			Tab:AddTextbox({
+				Name = "Notify At",
+				Default = "",
+				TextDisappear = true,
+				Callback = function(Value)
+					timeToNotify = Value
+				end	  
+			})
+
+			timer = Tab:AddLabel("Label")
+
+			nextTimeNotifyAt = Tab:AddLabel("0:00:00")
+
+			Tab:AddTextbox({
+				Name = "Webhook (Only With Webhook Type)",
+				Default = "",
+				TextDisappear = true,
+				Callback = function(Value)
+					webhook = Value
+					OrionLib:MakeNotification({
+						Name = "Azure Hub",
+						Content = "Sended Message To Test",
+						Image = "rbxassetid://4483345998",
+						Time = 5
+					})
+					Webhook("Testing Webhook", nil)
+					Settings.WebHook = Value
+					Save()
+				end	  
 			})
 
 			local oldCFrame = nil
