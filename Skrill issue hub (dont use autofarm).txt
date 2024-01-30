@@ -6264,7 +6264,7 @@ end)
 				Tab:AddDropdown({
 					Name = "Melee Skills",
 					Default = "None",
-					Options = {"Meteor Blow", "Dragon Throw", "Wild Hunt", "Senko Ki Blast [Evasive]", "Super God Fist", "Mystic Kick", "Raid Blast", "God Kamehameha", "Burning Slash", "Destructive Crash", "Time Skip/Molotov", "Sledge Hammer", "Meteor Combination", "Final Galick Rush", "Kiai [Evastive]", "Solar Flare [Evastive]", "Saturday Blast", "Slap [Taco Sound]", "Spirit Stab", "Spirit Sword", "Punisher Drive", "Final Flash Rush", "Kaioken Attack", "Fake Death", "Wolf Fang Fist", "Neo Wolf Fang Fist", "Orin Combo", "Super Dragon Hammer", "Divine Lasso", "Explosive Wave [Evasive]", "Break Strike [Evasive]", "Ki Blast Cannon", "Soul Strike", "Arm Crash", "Kamehameha Boost", "Blast Throught!!", "Explosive Demon Wave", "Meteor Break", "Gravity Bash", "God Bind [Evasive]", "Psychokinesis Crash", "Stinger Assault", "Final Revenger", "Searing Discharge", "Giant Storm"},
+					Options = {"Meteor Blow", "Dragon Throw", "Wild Hunt", "Super God Fist", "Mystic Kick", "Raid Blast", "God Kamehameha", "Burning Slash", "Destructive Crash", "Time Skip/Molotov", "Sledge Hammer", "Meteor Combination", "Final Galick Rush", "Saturday Blast", "Slap [Taco Sound]", "Spirit Stab", "Spirit Sword", "Punisher Drive", "Final Flash Rush", "Kaioken Attack", "Wolf Fang Fist", "Neo Wolf Fang Fist", "Orin Combo", "Super Dragon Hammer", "Divine Lasso", "Ki Blast Cannon", "Soul Strike", "Arm Crash", "Kamehameha Boost", "Blast Throught!!", "Explosive Demon Wave", "Meteor Break", "Gravity Bash", "Psychokinesis Crash", "Stinger Assault", "Final Revenger", "Searing Discharge", "Giant Storm"},
 					Callback = function(Value)
 						Skill = Value
 					end   
@@ -6280,9 +6280,18 @@ end)
 				})
 
 				Tab:AddDropdown({
+					Name = "Evasive's",
+					Default = "None",
+					Options = {"Senko Ki Blast", "Kiai", "Solar Flare", "Fake Death", "Explosive Wave", "Break Strike", "God Bind"},
+					Callback = function(Value)
+						Skill = Value
+					end   
+				})
+
+				Tab:AddDropdown({
 					Name = "Slots",
 					Default = "1",
-					Options = {"1", "2", "3", "4"},
+					Options = {"1", "2", "3", "4", "5", "6"},
 					Callback = function(Value)
 						if Skill ~= nil then
 							if Value == "1" then
@@ -6292,7 +6301,11 @@ end)
 							elseif Value == "2" then
 								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 4})
 							elseif Value == "4" then
-								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 1})					
+								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 1})
+							elseif Value == "5" then
+								game:GetService("ReplicatedStorage").Remotes.SaveEvasive:FireServer(Skill)
+							elseif value == "6" then
+								
 							end	
 						end
 					end   
