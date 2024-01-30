@@ -5795,7 +5795,7 @@ end)
 			end    
 		})
 
-		local InfStam = true
+		local InfStam = false
 		Tab:AddToggle({
 			Name = "Infinite Stamina",
 			Default = false,
@@ -5804,7 +5804,7 @@ end)
 			end    
 		})
 
-		local InfKi = true
+		local InfKi = false
 		Tab:AddToggle({
 			Name = "Infinite Ki",
 			Default = false,
