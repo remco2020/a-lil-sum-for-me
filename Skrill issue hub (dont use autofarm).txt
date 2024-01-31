@@ -6304,12 +6304,38 @@ end)
 								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 1})
 							elseif Value == "5" then
 								game:GetService("ReplicatedStorage").Remotes.SaveEvasive:FireServer(Skill)
-							elseif value == "6" then
+						
 								
 							end	
 						end
 					end   
 				})
+				Tab:AddButton({
+					Name = "Unlock All skills (temporarilly)",
+					Callback = function()
+						for _, v in pairs(game:GetService("Players").LocalPlayer:GetChildren()) do
+						game:GetService("Players").LocalPlayer.Data.Goku.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Vegeta.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Gohan.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Yamcha.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Tien.Value = 15
+						game:GetService("Players").LocalPlayer.Data.KidGohan.Value = 15	
+						game:GetService("Players").LocalPlayer.Data.Gogeta.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Vegito.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Turles.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Krillin.Value = 15
+						game:GetService("Players").LocalPlayer.Data.GokuBlack.Value = 15
+						game:GetService("Players").LocalPlayer.Data.HistoryCompletion.Value = 15
+						game:GetService("Players").LocalPlayer.Data.GauntletCompletion.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Bardock.Value = 15
+						game:GetService("Players").LocalPlayer.Data.FriezaDrops.Value = 15
+						game:GetService("Players").LocalPlayer.Data.CellDrops.Value = 15
+						game:GetService("Players").LocalPlayer.Data.KidBuuDrops.Value = 15
+
+						end
+					end    
+				})
+
 
 				Tab:AddButton({
 					Name = "Unlock All Quests",
@@ -6833,7 +6859,7 @@ end)
 
 						local ttempo = string.format("%.0f", hours)
 						tempo = ttempo .. ":" .. "0" .. math.floor(scripttime/60%60) .. ":" .. seconds
-						wait(15) print(tempo)
+						wait(5) print(tempo)
 
 					end
 
