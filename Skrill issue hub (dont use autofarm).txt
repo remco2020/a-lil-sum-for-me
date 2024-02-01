@@ -5996,46 +5996,6 @@ end)
 			})
 
 			Tab:AddToggle({
-				Name = "Fast PL Farm",
-				Default = false,
-				Callback = function(Value)
-					ShadowTrainFarm = Value
-				end    
-			})
-
-			Tab:AddSlider({
-				Name = "Fast PL Settings (High ban chance please dont use)",
-				Min = 0.05,
-				Max = 2,
-				Default = 0,
-				Color = Color3.fromRGB(255,255,255),
-				Increment = 0.01,
-				ValueName = "Seconds Between Hits",
-				Callback = function(Value)
-					ShadowTrainWait = Value
-				end    
-			})
-
-			Tab:AddToggle({
-				Name = "Players Kill Aura",
-				Default = false,
-				Callback = function(Value)
-					PlayersKillAura = Value
-
-					if firstTimeKillAura == false and Value == true then
-						firstTimeKillAura = true
-						OrionLib:MakeNotification({
-							Name = "Azure Hub",
-							Content = "There is a little chance of you getting kicked",
-							Image = "rbxassetid://4483345998",
-							Time = 5
-						})
-
-					end
-				end    
-			})
-
-			Tab:AddToggle({
 				Name = "Auto Dragon Balls",
 				Default = Settings.AutoDragonBall,
 				Callback = function(Value)
@@ -6335,7 +6295,20 @@ end)
 						end
 					end    
 				})
-
+				Tab:AddButton({
+					Name = "Better Skills",
+					Callback = function()
+						for _, v in pairs(game:GetService("ReplicatedStorage").Remotes:GetChildren()) do
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Two Enduring Fighting Spirits", 2})
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Brimstone Blast", 3})
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Final Flash Rush", 1})
+							game:GetService("ReplicatedStorage").Remotes.SaveEvasive:FireServer("Break Strike")
+							game:GetService("ReplicatedStorage").Remotes.SaveFeature:FireServer("MajinMark")
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Punisher Drive", 4})
+						end
+					end   
+			
+				})
 
 				Tab:AddButton({
 					Name = "Unlock All Quests",
