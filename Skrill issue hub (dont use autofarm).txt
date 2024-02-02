@@ -6037,7 +6037,7 @@ end)
 
 			Tab:AddTextbox({
 				Name = "Strength",
-				Default = power.Value + 10000,
+				Default = power.Value + 0,
 				TextDisappear = false,
 				Callback = function(Value)
 					strengthSelected = tonumber(Value)
