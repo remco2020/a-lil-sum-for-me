@@ -1,0 +1,6894 @@
+repeat wait() until game:IsLoaded()
+task.wait(1)
+
+local GSucc, GErr = pcall(function()
+
+	local player = game.Players.LocalPlayer
+
+	local isPremium = true
+	if LRM_IsUserPremium then
+		isPremium = LRM_IsUserPremium
+	end
+
+	local ex = identifyexecutor()
+
+	local wrongKeySystem = false
+
+	if isPremium == false then
+
+		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+
+		local Notify = AkaliNotif.Notify;
+
+		if not key then
+
+			if string.match(ex, "Synapse") then
+
+				Notify({
+					Description = "You can get a free premium key (2 hours) by going trough some ads, press P to copy it";
+					Title = "Azure Hub";
+					Duration = 15;
+				});
+
+				Notify({
+					Description = "If you have a key put above the script getgenv().key = 'UrKeyHere'";
+					Title = "Azure Hub";
+					Duration = 15;
+				});
+
+
+			else
+
+				Notify({
+					Description = "You can get a free premium key (2 hours) by going trough some ads, here: https://1.kelprepl.repl.co/getkey/AzureHub";
+					Title = "Azure Hub";
+					Duration = 15;
+				});
+
+				Notify({
+					Description = "If you have a key put above the script getgenv().key = 'UrKeyHere'";
+					Title = "Azure Hub";
+					Duration = 15;
+				});
+
+			end
+
+			game:GetService("UserInputService").InputBegan:Connect(function(inp, typin)
+
+				if not typin then
+
+					if inp.KeyCode == Enum.KeyCode.P then
+
+						if string.match(ex, "Synapse") then
+
+							Notify({
+								Description = "Link Copied";
+								Title = "Azure Hub";
+								Duration = 10;
+							});
+
+							setclipboard("https://1.kelprepl.repl.co/getkey/AzureHub")
+
+
+						end
+					end
+
+				end
+
+			end)
+
+		end	
+
+		local gg, ezz = pcall(function()
+
+			if key == game:HttpGet("https://1.kelprepl.repl.co/verify/AzureHub?verify_key="..key) then
+
+				isPremium = true
+
+			end
+
+		end)
+
+		if ezz then
+
+			wrongKeySystem = true
+
+		end
+
+		local successKeySystem, failedKeySystem = pcall(function()
+
+			if key then
+
+				if wrongKeySystem then
+
+					if string.match(ex, "Synapse") then
+
+						setclipboard("https://1.kelprepl.repl.co/getkey/AzureHub")
+
+						Notify({
+							Description = "Incorrect Key, the link has been copied";
+							Title = "Azure Hub";
+							Duration = 10;
+						});
+
+					else
+
+						Notify({
+							Description = "Incorrect Key, please go here: https://1.kelprepl.repl.co/getkey/AzureHub";
+							Title = "Azure Hub";
+							Duration = 25;
+						});
+					end
+
+				end
+			end
+		end)
+
+		if failedKeySystem then
+
+			if not string.match(failedKeySystem, "Luraph") then
+
+				Notify({
+					Description = "This should be auto fixed, the error as been logged";
+					Title = "Something broke";
+					Duration = 10;
+				});	
+
+				local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+
+				local TIME_ZONE = 1
+
+				local date = os.date("!*t")
+				local hour = (date.hour + TIME_ZONE) % 24
+				local ampm = hour < 12 and "AM" or "PM"
+				local timestamp = string.format("%02i:%02i %s", ((hour - 1) % 12) + 1, date.min, ampm)
+
+				local webhookcheck =
+					is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
+					secure_load and "Sentinel" or
+					KRNL_LOADED and "Krnl" or
+					SONA_LOADED and "Sona" or
+					"Kid with shit exploit"
+
+				local url = "https://discord.com/api/webhooks/1227053092193959946/jyERXFChcAVvHhRINIY0tUb-DOVPFaLo8-U9uuaMKuBXa2p10Z9DbRaGUzuQsLVcQNlP"
+				local data = {
+					--["content"] = " message(no embed)- you can take out embed if by deleting the bottom stuff(where it says EMBEDS)",
+					["embeds"] = {
+						{
+							["title"] = "**Error Logged: " .. GameName .."**",
+							["description"] = "Username: " .. game.Players.LocalPlayer.Name.. " / UserId: " .. game.Players.LocalPlayer.UserId .. " ||" .. "[" .. failedKeySystem .. "]" .. "|| Time: " .. timestamp,
+							["type"] = "rich",
+							["color"] = tonumber(0x7269da),
+							["image"] = {
+								["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+									tostring(game:GetService("Players").LocalPlayer.Name)
+							}
+						}
+					}
+				}
+				local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+				local headers = {
+					["content-type"] = "application/json"
+				}
+				request = http_request or request or HttpPost or syn.request
+				local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+				request(abcdef)
+
+			end
+
+		end
+
+	end
+
+	--]]
+
+	local succ, err = pcall(function()
+
+		local script = [[_G.CloseKey = "LeftAlt"
+script_key="KEYHERE";
+--getgenv().key = "281d0fefde254945b3782059e1c5bc01"
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/06aab01e993763361ebf0ca92458b182.lua"))()]]
+
+		local string = string.gsub(script, "KEYHERE" , script_key)
+		if _G.CloseKey then
+			string = string.gsub(string, "LeftAlt", _G.CloseKey)
+		end
+
+		syn.queue_on_teleport(string)
+
+
+	end)
+
+	if game.GameId == 2516044547 then -- ZO
+
+		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/IAmTheRealOne/CustomField/main/CustomFieldLoader'))()
+		local Window = nil
+		local player = game.Players.LocalPlayer
+		local character = player.Character
+		local root
+		local hum
+		if character then
+			root = character.HumanoidRootPart
+			hum = character.Humanoid
+		end
+		local tw = game:GetService("TweenService")
+		local debris = game:GetService("Debris")
+		local N = game:GetService("VirtualInputManager")
+		local adminIds = {21518356, 62228398, 429353334, 47994743, 39577287, 3199092988, 106535875, 276191915, 163879211, 78143663, 75775077, 283997152}
+		local synapse = false
+
+
+		function checkAdmin(plr)
+
+			if table.find(adminIds, plr.UserId) then
+
+				return true
+
+			else
+
+				return false
+
+			end
+
+		end
+
+		if isPremium then
+
+			Window = Rayfield:CreateWindow({
+				Name = "Azure Hub Pro",
+				LoadingTitle = "Azure Hub Pro",
+				LoadingSubtitle = "By Skrillex#6300",
+				ConfigurationSaving = {
+					Enabled = true,
+					FolderName = "AzureHub", -- Create a custom folder for your hub/game
+					FileName = "AzureHubCombatWarriors"
+				},
+				Discord = {
+					Enabled = false,
+					Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+					RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+				},
+				KeySystem = false, -- Set this to true to use our key system
+				KeySettings = {
+					Title = "Sirius Hub",
+					Subtitle = "Key System",
+					Note = "Join the discord (discord.gg/sirius)",
+					FileName = "SiriusKey",
+					SaveKey = true,
+					GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+					Key = "Hello"
+				}
+			})
+
+
+		else
+
+			Window = Rayfield:CreateWindow({
+				Name = "Azure Hub",
+				LoadingTitle = "Azure Hub",
+				LoadingSubtitle = "By Skrillex#6300",
+				ConfigurationSaving = {
+					Enabled = true,
+					FolderName = "AzureHub", -- Create a custom folder for your hub/game
+					FileName = "AzureHubCombatWarriors"
+				},
+				Discord = {
+					Enabled = true,
+					Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+					RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+				},
+				KeySystem = false, -- Set this to true to use our key system
+				KeySettings = {
+					Title = "Sirius Hub",
+					Subtitle = "https://discord.gg/KvM87FJHEj",
+					Note = "Join the discord (https://discord.gg/KvM87FJHEj)",
+					FileName = "SiriusKey",
+					SaveKey = true,
+					GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+					Key = "Hello"
+				}
+			})
+
+		end
+
+		local Esp = false
+		local basedOnHealth = false
+		local saysHealth = false
+		local saysName = true
+		local alwaysDisplayGreenFriends = false
+
+		function WTS(part)
+			local screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+			return Vector2.new(screen.x, screen.y)
+		end
+
+
+		function addESP(part, text, color, target)
+
+			local esp = Instance.new("BoolValue", part)
+			esp.Name = "Esp"
+
+			local name = Drawing.new("Text")
+			name.Text = text
+			name.Color = color
+			name.Position = WTS(part)
+			name.Size = 20.0
+			name.Outline = true
+			name.Center = true
+			name.Visible = true
+
+			local isPlayer = false
+			local pTarget
+
+			if game.Players:GetPlayerFromCharacter(target) then
+
+				isPlayer = true
+
+				pTarget = game.Players:GetPlayerFromCharacter(target)
+
+			end
+
+			local conn
+			conn = game:GetService("RunService").Heartbeat:connect(function()
+				local succEsp, errEsp = pcall(function()
+
+					local destroyed = not part:IsDescendantOf(workspace)
+					if destroyed and name ~= nil then
+						name:Remove()
+						conn:Disconnect()
+					end
+					if part ~= nil then
+						name.Position = WTS(part)
+					else
+						name:Remove()
+						conn:Disconnect()
+					end
+					local _, screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+					if screen then
+						name.Visible = true
+					else
+						name.Visible = false
+					end
+
+
+					if Esp == false then
+
+						conn:Disconnect()
+						name:Remove()
+						esp:Destroy()
+
+					end
+
+					if target then
+
+						if saysHealth then
+
+							name.Text = text .. " [" .. math.floor(target.Humanoid.Health) .. "/" .. math.floor(target.Humanoid.MaxHealth) .. "]"
+
+						end
+
+						if basedOnHealth then
+
+							local percentage = target.Humanoid.Health / target.Humanoid.MaxHealth
+
+							local r, g = Color3.new(1, 0, 0), Color3.new(0, 1, 0) -- Red and green
+
+							if isPlayer and alwaysDisplayGreenFriends then
+
+								if pTarget:IsFriendsWith(player.UserId) then
+
+									return
+
+
+								end
+
+							end
+
+							name.Color = r:lerp(g, percentage)
+
+						end
+
+						if isPlayer then
+
+							if alwaysDisplayGreenFriends then
+
+								if pTarget:IsFriendsWith(player.UserId) then
+
+									name.Color = Color3.fromRGB(0, 255, 0)
+
+								end
+
+							end
+
+						end
+
+					end
+
+				end)
+
+			end)
+		end
+
+		local choosenSlots = {}
+		local text2 = ""
+		local autoSkill = false
+		local speed = 0
+		local jumpPower = 0
+		local selectedCFrame = nil
+		local aP = false
+
+		local touchablePart
+
+		local Home = Window:CreateTab("Home") -- Title, Image
+
+		local Utilities = Home:CreateSection("Utilities", false)
+
+		local Timer = Home:CreateLabel("00:00:00")
+
+		local tabEsp = Window:CreateTab("Esp") -- Title, Image
+
+		local espToggle = tabEsp:CreateToggle({
+			Name = "Esp",
+			CurrentValue = false,
+			Flag = "Esp",
+			Callback = function(Value)
+
+				Esp = Value
+
+				if Value == true then
+
+					for _, v in pairs(game:GetService("Workspace"):GetChildren()) do
+
+						if v:FindFirstChild("HumanoidRootPart") then
+
+							if not v.HumanoidRootPart:FindFirstChild("Esp") then
+
+								if v.Name ~= player.Name then
+
+									addESP(v.HumanoidRootPart, v.Name, Color3.fromRGB(255, 0, 0), v)
+
+								end
+
+							end
+						end
+
+					end
+
+				end
+			end,
+		})
+
+		game:GetService("Workspace").ChildAdded:Connect(function(v)
+
+			if v.Name ~= player.Name and Esp and v:FindFirstChild("HumanoidRootPart") then
+
+				addESP(v.HumanoidRootPart, v.Name, Color3.fromRGB(255, 0, 0), v)
+
+			end
+
+		end)
+
+		local HBased = tabEsp:CreateToggle({
+			Name = "Color Based On Health",
+			Info = "Higher the hp is the greener the text is, else more red",
+			CurrentValue = false,
+			Flag = "HBased",
+			Callback = function(Value)
+
+				basedOnHealth = Value
+
+				if Esp == true then
+					Esp = false
+					espToggle:Set(false)
+					task.wait(0.1)
+					Esp = true
+					espToggle:Set(true)
+				end
+
+			end,
+		})
+
+		local sHealth = tabEsp:CreateToggle({
+			Name = "Display Health",
+			CurrentValue = false,
+			Flag = "sHealth",
+			Callback = function(Value)
+
+				saysHealth = Value
+
+				if Esp == true then
+					Esp = false
+					espToggle:Set(false)
+					task.wait(0.1)
+					Esp = true
+					espToggle:Set(true)
+				end
+
+			end,
+		})
+
+		local displayGreenFriends = tabEsp:CreateToggle({
+			Name = "Display Friends Green",
+			CurrentValue = false,
+			Flag = "displayGreenFriends",
+			Callback = function(Value)
+
+				alwaysDisplayGreenFriends = Value
+
+				if Esp == true then
+					Esp = false
+					espToggle:Set(false)
+					task.wait(0.1)
+					Esp = true
+					espToggle:Set(true)
+				end
+
+			end,
+		})
+
+		local Tab2
+		if isPremium == true then
+			Tab2 = Window:CreateTab("Combat") -- Title, Image
+		end	
+
+
+		local autoSpin = false
+		local noTraps = false
+		local aPSize = nil
+		local aKick = false
+		local AKickSize = 10
+		local adjustSpeedOfAnimation = false
+		local adjustSpeed = 1
+
+		local ApToggle
+
+		if isPremium == true then
+
+			if player.Character then
+
+				player.Character.Humanoid.Animator.AnimationPlayed:Connect(function(anim)
+
+					anim:AdjustSpeed(adjustSpeed)
+
+				end)
+
+			end
+
+			player.CharacterAdded:Connect(function(char)
+
+				task.wait(1.2)
+
+				char.Humanoid.Animator.AnimationPlayed:Connect(function(anim)
+
+					anim:AdjustSpeed(adjustSpeed)
+
+				end)
+
+			end)
+
+			ApToggle = Tab2:CreateToggle({
+				Name = "Auto Parry",
+				CurrentValue = false,
+				Flag = "Ap", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					aP = Value
+
+				end,
+			})
+
+			local ASize = Tab2:CreateSlider({
+				Name = "Auto Parry Size",
+				Range = {3, 50},
+				Increment = 1,
+				Suffix = "How big is it daddy?",
+				CurrentValue = 10,
+				Flag = "ApSize", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					aPSize = Value
+
+				end,
+			})
+
+			local AnimSpeed = Tab2:CreateSlider({
+				Name = "Animation Speed",
+				Range = {0.1, 3},
+				Increment = 0.1,
+				Suffix = "x",
+				CurrentValue = 1,
+				Flag = "AnimSpeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					adjustSpeed = Value
+
+				end,
+			})
+
+			local Keybind = Tab2:CreateKeybind({
+				Name = "Fake Swing",
+				CurrentKeybind = "V",
+				HoldToInteract = false,
+				Flag = "FakeSwing", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Keybind)
+
+					if not player.Character then
+
+						return
+
+					end
+
+					local animator = player.Character.Humanoid.Animator
+					local anim = animator:LoadAnimation(player.Character:FindFirstChildWhichIsA("Tool").SwingAnimations:FindFirstChild("1"))
+					anim:Play()
+
+				end,
+			})
+
+			local animationInfo = {}
+
+			function getInfo(id)
+				local success, info = pcall(function()
+					return game:GetService("MarketplaceService"):GetProductInfo(id)
+				end)
+				if success then
+					return info
+				end
+				return {Name=''}
+			end
+
+			local AnimNames = {
+				'slash',
+				'swing',
+				'sword'
+			}
+
+			local x, y = 0, 0
+
+			local k, e = pcall(function()
+				local function playerAdded(v)
+					local function charadded(char)
+						local humanoid = char:WaitForChild("Humanoid", 5)
+						if humanoid then
+							humanoid.Animator.AnimationPlayed:Connect(function(track)
+								print(v.Name, "NPCS")
+								local info = animationInfo[track.Animation.AnimationId]
+								if not info then
+									info = getInfo(tonumber(track.Animation.AnimationId:match("%d+")))
+									animationInfo[track.Animation.AnimationId] = info
+								end
+
+								if (player.Character and player.Character:FindFirstChild("HumanoidRootPart") and char:FindFirstChild("HumanoidRootPart")) and (aP or aKick) then
+									local mag = (char.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
+									if mag < aPSize then
+										print(v.Name .. "EZZ")
+										for _, animName in pairs(AnimNames) do
+											if string.match(string.lower(info.Name), animName) then
+												task.wait(track.Length * 0.25)
+												local x, y = 0, 0
+												N:SendMouseButtonEvent(x, y, 1, true, game, 0)
+												task.wait(0.5)
+												local x, y = 0, 0
+												N:SendMouseButtonEvent(x, y, 1, false, game, 0)
+
+											end
+										end
+
+									end
+								end
+							end)
+						end
+					end
+
+					if v.Character then
+						charadded(v.Character)
+					end
+					v.CharacterAdded:Connect(charadded)
+				end
+
+				for i,v in pairs(game.Players:GetChildren()) do              
+					if v ~= player then
+						playerAdded(v)
+					end
+				end
+
+				game.Players.PlayerAdded:Connect(playerAdded)
+
+			end)
+			if e then
+
+				Rayfield:Notify({
+					Title = "Notification Title",
+					Content = e,
+					Duration = 6.5,
+					Image = 4483362458,
+					Actions = { -- Notification Buttons
+						Ignore = {
+							Name = "Okay!",
+							Callback = function()
+								print("The user tapped Okay!")
+							end
+						},
+					},
+				})
+
+			end
+
+			game:GetService("RunService").Heartbeat:Connect(function()
+
+				local scripttime = game.Workspace.DistributedGameTime
+				local seconds = scripttime % 60
+				local minutes = math.floor(scripttime / 60 % 60)
+				local hours = math.floor(scripttime / 3600)
+				local tempo = "0" .. string.format("%.0f", hours) .. "(Hour/s), " .. string.format("%.0f", minutes) .. "(Minute/s), " .. string.format("%.0f", seconds) .. "(Second/s)"
+				Timer:Set(tempo)
+
+			end)
+
+		end
+
+		Rayfield:LoadConfiguration()
+
+
+	elseif game.GameId == 1390601379 then -- Combat Warriors
+
+		if isPremium and string.match(ex, "Synapse") then
+
+			local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/IAmTheRealOne/CustomField/main/CustomFieldLoader'))()
+			local Window = nil
+			local player = game.Players.LocalPlayer
+			local character = player.Character
+			local root
+			local hum
+			if character then
+				root = character.HumanoidRootPart
+				hum = character.Humanoid
+			end
+			local tw = game:GetService("TweenService")
+			local debris = game:GetService("Debris")
+			local adminIds = {21518356, 62228398, 429353334, 47994743, 39577287, 3199092988, 106535875, 276191915, 163879211, 78143663, 75775077, 283997152}
+			local synapse = false
+
+
+			function checkAdmin(plr)
+
+				if table.find(adminIds, plr.UserId) then
+
+					return true
+
+				else
+
+					return false
+
+				end
+
+			end
+
+			if isPremium then
+
+				Window = Rayfield:CreateWindow({
+					Name = "Azure Hub Pro",
+					LoadingTitle = "Azure Hub Pro",
+					LoadingSubtitle = "By Skrillex#6300",
+					ConfigurationSaving = {
+						Enabled = true,
+						FolderName = "AzureHub", -- Create a custom folder for your hub/game
+						FileName = "AzureHubCombatWarriors"
+					},
+					Discord = {
+						Enabled = false,
+						Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+						RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+					},
+					KeySystem = false, -- Set this to true to use our key system
+					KeySettings = {
+						Title = "Sirius Hub",
+						Subtitle = "Key System",
+						Note = "Join the discord (discord.gg/sirius)",
+						FileName = "SiriusKey",
+						SaveKey = true,
+						GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+						Key = "Hello"
+					}
+				})
+
+
+			else
+
+				Window = Rayfield:CreateWindow({
+					Name = "Azure Hub",
+					LoadingTitle = "Azure Hub",
+					LoadingSubtitle = "By Skrillex#6300",
+					ConfigurationSaving = {
+						Enabled = true,
+						FolderName = "AzureHub", -- Create a custom folder for your hub/game
+						FileName = "AzureHubCombatWarriors"
+					},
+					Discord = {
+						Enabled = true,
+						Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+						RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+					},
+					KeySystem = false, -- Set this to true to use our key system
+					KeySettings = {
+						Title = "Sirius Hub",
+						Subtitle = "https://discord.gg/KvM87FJHEj",
+						Note = "Join the discord (https://discord.gg/KvM87FJHEj)",
+						FileName = "SiriusKey",
+						SaveKey = true,
+						GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+						Key = "Hello"
+					}
+				})
+
+			end
+
+			local Esp = false
+			local basedOnHealth = false
+			local saysHealth = false
+			local saysName = true
+			local alwaysDisplayGreenFriends = false
+
+			function WTS(part)
+				local screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+				return Vector2.new(screen.x, screen.y)
+			end
+
+
+			function addESP(part, text, color, target)
+
+				local esp = Instance.new("BoolValue", part)
+				esp.Name = "Esp"
+
+				local name = Drawing.new("Text")
+				name.Text = text
+				name.Color = color
+				name.Position = WTS(part)
+				name.Size = 20.0
+				name.Outline = true
+				name.Center = true
+				name.Visible = true
+
+				local isPlayer = false
+				local pTarget
+
+				if game.Players:GetPlayerFromCharacter(target) then
+
+					isPlayer = true
+
+					pTarget = game.Players:GetPlayerFromCharacter(target)
+
+				end
+
+				local conn
+				conn = game:GetService("RunService").Heartbeat:connect(function()
+					local succEsp, errEsp = pcall(function()
+
+						local destroyed = not part:IsDescendantOf(workspace)
+						if destroyed and name ~= nil then
+							name:Remove()
+							conn:Disconnect()
+						end
+						if part ~= nil then
+							name.Position = WTS(part)
+						else
+							name:Remove()
+							conn:Disconnect()
+						end
+						local _, screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+						if screen then
+							name.Visible = true
+						else
+							name.Visible = false
+						end
+
+
+						if Esp == false then
+
+							conn:Disconnect()
+							name:Remove()
+							esp:Destroy()
+
+						end
+
+						if target then
+
+							if saysHealth then
+
+								name.Text = text .. " [" .. math.floor(target.Humanoid.Health) .. "/" .. math.floor(target.Humanoid.MaxHealth) .. "]"
+
+							end
+
+							if basedOnHealth then
+
+								local percentage = target.Humanoid.Health / target.Humanoid.MaxHealth
+
+								local r, g = Color3.new(1, 0, 0), Color3.new(0, 1, 0) -- Red and green
+
+								if isPlayer and alwaysDisplayGreenFriends then
+
+									if pTarget:IsFriendsWith(player.UserId) then
+
+										return
+
+
+									end
+
+								end
+
+								name.Color = r:lerp(g, percentage)
+
+							end
+
+							if isPlayer then
+
+								if alwaysDisplayGreenFriends then
+
+									if pTarget:IsFriendsWith(player.UserId) then
+
+										name.Color = Color3.fromRGB(0, 255, 0)
+
+									end
+
+								end
+
+							end
+
+						end
+
+					end)
+
+				end)
+			end
+
+			local choosenSlots = {}
+			local text2 = ""
+			local autoSkill = false
+			local speed = 0
+			local jumpPower = 0
+			local selectedCFrame = nil
+			local aP = false
+
+			local touchablePart
+
+			local Home = Window:CreateTab("Home") -- Title, Image
+
+			local Utilities = Home:CreateSection("Utilities", false)
+
+			local Timer = Home:CreateLabel("00:00:00")
+
+			local tabEsp = Window:CreateTab("Esp") -- Title, Image
+
+			local espToggle = tabEsp:CreateToggle({
+				Name = "Esp",
+				CurrentValue = false,
+				Flag = "Esp",
+				Callback = function(Value)
+
+					Esp = Value
+
+					if Value == true then
+
+						for _, v in pairs(game:GetService("Workspace").PlayerCharacters:GetChildren()) do
+
+							if v:FindFirstChild("HumanoidRootPart") then
+
+								if not v.HumanoidRootPart:FindFirstChild("Esp") then
+
+									if v.Name ~= player.Name then
+
+										addESP(v.HumanoidRootPart, v.Name, Color3.fromRGB(255, 0, 0), v)
+
+									end
+
+								end
+							end
+
+						end
+
+					end
+				end,
+			})
+
+			game:GetService("Workspace").PlayerCharacters.ChildAdded:Connect(function(v)
+
+				if v.Name ~= player.Name and Esp then
+
+					addESP(v.HumanoidRootPart, v.Name, Color3.fromRGB(255, 0, 0), v)
+
+				end
+
+			end)
+
+			local HBased = tabEsp:CreateToggle({
+				Name = "Color Based On Health",
+				Info = "Higher the hp is the greener the text is, else more red",
+				CurrentValue = false,
+				Flag = "HBased",
+				Callback = function(Value)
+
+					basedOnHealth = Value
+
+					if Esp == true then
+						Esp = false
+						espToggle:Set(false)
+						task.wait(0.1)
+						Esp = true
+						espToggle:Set(true)
+					end
+
+				end,
+			})
+
+			local sHealth = tabEsp:CreateToggle({
+				Name = "Display Health",
+				CurrentValue = false,
+				Flag = "sHealth",
+				Callback = function(Value)
+
+					saysHealth = Value
+
+					if Esp == true then
+						Esp = false
+						espToggle:Set(false)
+						task.wait(0.1)
+						Esp = true
+						espToggle:Set(true)
+					end
+
+				end,
+			})
+
+			local displayGreenFriends = tabEsp:CreateToggle({
+				Name = "Display Friends Green",
+				CurrentValue = false,
+				Flag = "displayGreenFriends",
+				Callback = function(Value)
+
+					alwaysDisplayGreenFriends = Value
+
+					if Esp == true then
+						Esp = false
+						espToggle:Set(false)
+						task.wait(0.1)
+						Esp = true
+						espToggle:Set(true)
+					end
+
+				end,
+			})
+
+			local Tab2
+			if isPremium == true then
+				Tab2 = Window:CreateTab("Combat") -- Title, Image
+			end	
+
+
+			local autoSpin = false
+			local noTraps = false
+			local aPSize = nil
+
+			local ApToggle
+
+			if isPremium == true then
+
+				ApToggle = Tab2:CreateToggle({
+					Name = "Auto Parry",
+					CurrentValue = false,
+					Callback = function(Value)
+
+						aP = Value
+
+					end,
+				})
+
+				local ASize = Tab2:CreateSlider({
+					Name = "Auto Parry Size",
+					Range = {3, 50},
+					Increment = 1,
+					Suffix = "How big is it daddy?",
+					CurrentValue = 10,
+					Flag = "ApSize", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+					Callback = function(Value)
+
+						aPSize = Value
+
+					end,
+				})
+
+				NoTraps = Tab2:CreateToggle({
+					Name = "No Traps",
+					CurrentValue = false,
+					Callback = function(Value)
+
+						noTraps = Value
+
+					end,
+				})
+
+			end
+
+			local animationInfo = {}
+
+			function getInfo(id)
+				local success, info = pcall(function()
+					return game:GetService("MarketplaceService"):GetProductInfo(id)
+				end)
+				if success then
+					return info
+				end
+				return {Name=''}
+			end
+
+			local AnimNames = {
+				'Slash',
+				'Swing',
+				'Sword'
+			}
+
+			function playerAdded(v)
+				local function charadded(char)
+					local humanoid = char:WaitForChild("Humanoid", 5)
+					if humanoid then
+						humanoid.Animator.AnimationPlayed:Connect(function(track)
+							local info = animationInfo[track.Animation.AnimationId]
+							if not info then
+								info = getInfo(tonumber(track.Animation.AnimationId:match("%d+")))
+								animationInfo[track.Animation.AnimationId] = info
+							end
+
+							if (player.Character and player.Character:FindFirstChild("Head") and v.Character:FindFirstChild("Head")) and aP == true then
+								local mag = (v.Character.Head.Position - player.Character.Head.Position).Magnitude
+								if mag < aPSize then
+
+									for _, animName in pairs(AnimNames) do
+										if info.Name:match(animName) then
+											keypress(0x46)
+											task.wait(0.5)
+											keyrelease(0x46)
+										end
+									end
+
+								end
+							end
+						end)
+					end
+				end
+
+				if v.Character then
+					charadded(v.Character)
+				end
+				v.CharacterAdded:Connect(charadded)
+			end
+
+			for i,v in pairs(game.Players:GetPlayers()) do              
+				if v ~= player then
+					playerAdded(v)
+				end
+			end
+
+			game.Players.PlayerAdded:Connect(playerAdded)
+
+			game:GetService("RunService").Heartbeat:Connect(function()
+
+				local scripttime = game.Workspace.DistributedGameTime
+				local seconds = scripttime % 60
+				local minutes = math.floor(scripttime / 60 % 60)
+				local hours = math.floor(scripttime / 3600)
+				local tempo = "0" .. string.format("%.0f", hours) .. "(Hour/s), " .. string.format("%.0f", minutes) .. "(Minute/s), " .. string.format("%.0f", seconds) .. "(Second/s)"
+				Timer:Set(tempo)
+
+				if noTraps then
+
+					if game.Workspace.EffectsJunk:FindFirstChild("OpenBearTrap") then
+
+						game.Workspace.EffectsJunk:FindFirstChild("OpenBearTrap").Hitbox.CanTouch = false	
+
+					end
+
+				end
+
+			end)
+
+			Rayfield:LoadConfiguration()
+
+		else
+
+			player:Kick("Requirements: Azure Hub Pro and Synapse X, Current Exploit: " .. ex)
+
+		end
+
+	elseif game.GameId == 3457700596 then -- Fruits Battlegrounds
+
+		getgenv().SecureMode = true
+		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/IAmTheRealOne/CustomField/main/CustomFieldLoader'))()
+		local Window = nil
+		local player = game.Players.LocalPlayer
+		local character = player.Character
+		local root
+		local hum
+		if character then
+			root = character.HumanoidRootPart
+			hum = character.Humanoid
+		end
+		local tw = game:GetService("TweenService")
+		local debris = game:GetService("Debris")
+		local N = game:GetService("VirtualInputManager")
+		local adminIds = {21518356}
+		local synapse = false
+
+		function checkAdmin(plr)
+
+			if table.find(adminIds, plr.UserId) then
+
+				return true
+
+			else
+
+				return false
+
+			end
+
+		end
+
+		if isPremium then
+
+			Window = Rayfield:CreateWindow({
+				Name = "Azure Hub Pro",
+				LoadingTitle = "Azure Hub Pro",
+				LoadingSubtitle = "By Skrillex#6300",
+				ConfigurationSaving = {
+					Enabled = true,
+					FolderName = "AzureHub", -- Create a custom folder for your hub/game
+					FileName = "AzureHubFruitsBattlegrounds"
+				},
+				Discord = {
+					Enabled = false,
+					Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+					RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+				},
+				KeySystem = false, -- Set this to true to use our key system
+				KeySettings = {
+					Title = "Sirius Hub",
+					Subtitle = "Key System",
+					Note = "Join the discord (discord.gg/sirius)",
+					FileName = "SiriusKey",
+					SaveKey = true,
+					GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+					Key = "Hello"
+				}
+			})
+
+
+		else
+
+			Window = Rayfield:CreateWindow({
+				Name = "Azure Hub",
+				LoadingTitle = "Azure Hub",
+				LoadingSubtitle = "By Skrillex#6300",
+				ConfigurationSaving = {
+					Enabled = true,
+					FolderName = "AzureHub", -- Create a custom folder for your hub/game
+					FileName = "AzureHubFruitsBattlegrounds"
+				},
+				Discord = {
+					Enabled = true,
+					Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+					RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+				},
+				KeySystem = false, -- Set this to true to use our key system
+				KeySettings = {
+					Title = "Sirius Hub",
+					Subtitle = "https://discord.gg/KvM87FJHEj",
+					Note = "Join the discord (https://discord.gg/KvM87FJHEj)",
+					FileName = "SiriusKey",
+					SaveKey = true,
+					GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+					Key = "Hello"
+				}
+			})
+
+		end
+
+		local Esp = false
+		local basedOnHealth = false
+		local saysHealth = false
+		local saysName = true
+		local alwaysDisplayGreenFriends = false
+
+		function WTS(part)
+			local screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+			return Vector2.new(screen.x, screen.y)
+		end
+
+
+		function addESP(part, text, color, target)
+
+			local esp = Instance.new("BoolValue", part)
+			esp.Name = "Esp"
+
+			local name = Drawing.new("Text")
+			name.Text = text
+			name.Color = color
+			name.Position = WTS(part)
+			name.Size = 20.0
+			name.Outline = true
+			name.Center = true
+			name.Visible = true
+
+			local isPlayer = false
+			local pTarget
+
+			if game.Players:GetPlayerFromCharacter(target) then
+
+				isPlayer = true
+
+				pTarget = game.Players:GetPlayerFromCharacter(target)
+
+			end
+
+			local conn
+			conn = game:GetService("RunService").Heartbeat:connect(function()
+				if Esp == false then
+
+					conn:Disconnect()
+					name:Remove()
+					esp:Destroy()
+
+				end
+
+				if target then
+
+					if saysHealth then
+
+						name.Text = text .. " [" .. math.floor(target.Humanoid.Health) .. "/" .. math.floor(target.Humanoid.MaxHealth) .. "]"
+
+					end
+
+					if basedOnHealth then
+
+						local percentage = target.Humanoid.Health / target.Humanoid.MaxHealth
+
+						local r, g = Color3.new(1, 0, 0), Color3.new(0, 1, 0) -- Red and green
+
+						if isPlayer and alwaysDisplayGreenFriends then
+
+							if pTarget:IsFriendsWith(player.UserId) then
+
+								return
+
+
+							end
+
+						end
+
+						name.Color = r:lerp(g, percentage)
+
+					end
+
+					if isPlayer then
+
+						if alwaysDisplayGreenFriends then
+
+							if pTarget:IsFriendsWith(player.UserId) then
+
+								name.Color = Color3.fromRGB(0, 255, 0)
+
+							end
+
+						end
+
+					end
+
+				end
+
+				local destroyed = not part:IsDescendantOf(workspace)
+				if destroyed and name ~= nil then
+					name:Remove()
+				end
+				if part ~= nil then
+					name.Position = WTS(part)
+				else
+					name:Remove()
+				end
+				local _, screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+				if screen then
+					name.Visible = true
+				else
+					name.Visible = false
+				end
+			end)
+		end
+
+		local choosenSlots = {}
+		local text2 = ""
+		local autoSkill = false
+		local speed = 0
+		local jumpPower = 0
+		local selectedCFrame = nil
+		local wToggle = false
+		local jToggle = false
+
+		local Home = Window:CreateTab("Home") -- Title, Image
+
+		local Utilities = Home:CreateSection("Utilities", false)
+
+		local Timer = Home:CreateLabel("00:00:00")
+
+		local oldCFrame = nil
+
+		local safePlace = Home:CreateToggle({
+			Name = "Safe Place",
+			CurrentValue = false,
+			Callback = function(Value)
+
+				if Value == false then
+
+					if player.Character then
+
+						player.Character.HumanoidRootPart.CFrame = oldCFrame
+
+					end
+
+				end
+
+				if Value == true then
+
+					if not game.Workspace:FindFirstChild("SafePart") and player.Character then
+
+						oldCFrame = player.Character.HumanoidRootPart.CFrame
+
+						local part = Instance.new("Part", game.Workspace)
+						part.Name = "SafePart"
+						part.Anchored = true
+						part.Position = Vector3.new(math.random(10000, 20000), 80000, math.random(10000, 100000))
+
+						player.Character.HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 10, 0)
+
+						part.Size = Vector3.new(700, 25, 700)
+
+					else
+
+						oldCFrame = player.Character.HumanoidRootPart.CFrame
+
+						player.Character.HumanoidRootPart.CFrame = game.Workspace.SafePart.CFrame * CFrame.new(0, 10, 0)
+
+					end
+
+				end
+			end,
+		})
+
+		local WalkSpeed = Home:CreateSlider({
+			Name = "WalkSpeed",
+			Range = {0, 400},
+			Increment = 1,
+			Suffix = "Speed",
+			CurrentValue = 0,
+			Callback = function(Value)
+				speed = Value
+			end,
+		})
+
+		local JumpPower = Home:CreateSlider({
+			Name = "Jump Power",
+			Range = {0, 300},
+			Increment = 1,
+			Suffix = "Power",
+			CurrentValue = 0,
+			Callback = function(Value)
+				jumpPower = Value
+			end,
+		})
+
+		local WalkSpeedToggle = Home:CreateKeybind({
+			Name = "WalkSpeed Toggle",
+			CurrentKeybind = "G",
+			HoldToInteract = false,
+			Flag = "WalkSpeedToggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Keybind)
+
+				local val
+
+				if wToggle == false then
+
+					wToggle = true
+
+				else
+
+					wToggle = false
+					player.Character.Humanoid.WalkSpeed = 16
+
+				end
+
+			end
+		})
+
+		local JumpPowerToggle = Home:CreateKeybind({
+			Name = "Jump Power Toggle",
+			CurrentKeybind = "T",
+			HoldToInteract = false,
+			Flag = "JumpPowerToggle", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Keybind)
+
+				if jToggle == false then
+
+					jToggle = true
+
+				else
+
+					jToggle = false
+					player.Character.Humanoid.JumpPower = 50
+
+				end
+
+			end
+		})
+
+		local CFrameSaving = Home:CreateKeybind({
+			Name = "CFrame Saving",
+			CurrentKeybind = "J",
+			HoldToInteract = false,
+			Flag = "CFrameSaving", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Keybind)
+
+				selectedCFrame = root.CFrame
+
+			end
+		})
+
+		local CFrameTeleport = Home:CreateKeybind({
+			Name = "CFrame Teleport",
+			CurrentKeybind = "H",
+			HoldToInteract = false,
+			Flag = "CFrameTeleport", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Keybind)
+				if selectedCFrame then
+
+					root.CFrame = selectedCFrame
+
+				end
+
+			end
+		})
+
+		local tabEsp = Window:CreateTab("Esp") -- Title, Image
+
+		local espToggle = tabEsp:CreateToggle({
+			Name = "Esp",
+			CurrentValue = false,
+			Flag = "Esp",
+			Callback = function(Value)
+
+				Esp = Value
+
+				if Value == true then
+
+					for _, v in pairs(game.Workspace.Characters.Players:GetChildren()) do
+
+						if v:FindFirstChild("HumanoidRootPart") then
+
+							if not v.HumanoidRootPart:FindFirstChild("Esp") then
+
+								if v.Name ~= player.Name then
+
+									addESP(v.HumanoidRootPart, v.Name, Color3.fromRGB(255, 0, 0), v)
+
+								end
+
+							end
+						end
+
+					end
+
+					game.Workspace.Characters.Players.ChildAdded:Connect(function(v)
+
+						if v.Name ~= player.Name then
+
+							addESP(v.HumanoidRootPart, v.Name, Color3.fromRGB(255, 0, 0), v)
+
+						end
+
+					end)
+
+				end
+			end,
+		})
+
+		local HBased = tabEsp:CreateToggle({
+			Name = "Color Based On Health",
+			Info = "Higher the hp is the greener the text is, else more red",
+			CurrentValue = false,
+			Flag = "HBased",
+			Callback = function(Value)
+
+				basedOnHealth = Value
+
+				if Esp == true then
+					Esp = false
+					espToggle:Set(false)
+					task.wait(0.1)
+					Esp = true
+					espToggle:Set(true)
+				end
+
+			end,
+		})
+
+		local sHealth = tabEsp:CreateToggle({
+			Name = "Display Health",
+			CurrentValue = false,
+			Flag = "sHealth",
+			Callback = function(Value)
+
+				saysHealth = Value
+
+				if Esp == true then
+					Esp = false
+					espToggle:Set(false)
+					task.wait(0.1)
+					Esp = true
+					espToggle:Set(true)
+				end
+
+			end,
+		})
+
+		local displayGreenFriends = tabEsp:CreateToggle({
+			Name = "Display Friends Green",
+			CurrentValue = false,
+			Flag = "displayGreenFriends",
+			Callback = function(Value)
+
+				alwaysDisplayGreenFriends = Value
+
+				if Esp == true then
+					Esp = false
+					espToggle:Set(false)
+					task.wait(0.1)
+					Esp = true
+					espToggle:Set(true)
+				end
+
+			end,
+		})
+
+		local Tab2
+		if isPremium == true then
+			Tab2 = Window:CreateTab("Fruit Spinner") -- Title, Image
+		end	
+
+		local Tab3 = Window:CreateTab("Farming") -- Title, Image
+
+		local skillFarm = Tab3:CreateToggle({
+			Name = "Auto Skill",
+			CurrentValue = false,
+			Callback = function(Value)
+				autoSkill = Value
+
+				if Value == false then
+
+					if player.Character then
+
+						if player.Character:FindFirstChild("Humanoid") then
+
+							player.Character.Humanoid.Health = 0
+
+						end
+
+					end
+
+				end
+			end,
+		})
+
+		local slotsChoosen = Tab3:CreateLabel("No Slots Choosen")
+
+		local Dropdown = Tab3:CreateDropdown({
+			Name = "Slots",
+			Options = {"Slot 1","Slot 2", "Slot 3", "Slot 4", "Slot 5", "Slot 6", "Slot 7"},
+			CurrentOption = "Option 1",
+			Flag = "SlotsSelected", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Option)
+
+
+				if table.find(choosenSlots, Option) then
+
+					table.remove(choosenSlots, table.find(choosenSlots, Option))
+
+				else
+
+					table.insert(choosenSlots, Option)
+
+				end
+
+				if string.match(text2, Option) then
+
+					local newStr = nil
+
+					if string.match(text2, ", " .. Option) then
+
+						newStr = string.gsub(text2, ", " .. Option, "")
+
+					elseif string.match(text2, Option .. ",") then
+
+						newStr = string.gsub(text2, Option .. ",", "")
+
+					else
+
+						newStr = string.gsub(text2, Option, "")
+
+					end
+
+					text2 = newStr
+					slotsChoosen:Set(text2)
+					return
+
+				end
+
+				if text2 == "" or text2 == " " then
+
+					slotsChoosen:Set(Option)
+					text2 = Option
+
+				else
+
+					slotsChoosen:Set(text2 .. ", " .. Option)
+					text2 = text2 .. ", " .. Option
+
+				end
+
+			end,
+		})
+
+		local autoSpin = false
+
+		local ASpin
+		local choosenFruits = {}
+
+		if isPremium == true then
+
+			ASpin = Tab2:CreateToggle({
+				Name = "Fruit Spin",
+				CurrentValue = false,
+				Callback = function(Value)
+
+					if Value == true then
+
+						local currSlot = player["MAIN_DATA"].Slot.Value
+						local currFruit = player["MAIN_DATA"].Slots:FindFirstChild(currSlot)
+
+						Window:Prompt({
+							Title = 'Azure Hub',
+							SubTitle = 'Auto Fruit Spin',
+							Content = 'you currently have: ' .. currFruit.Value .. " Ur sure you want to spin?",
+							Actions = {
+								Accept = {
+									Name = 'Yes',
+									Callback = function()
+										autoSpin = Value
+									end,
+								},
+
+								Decline = {
+									Name = 'No',
+									Callback = function()
+										autoSpin = false
+										ASpin:Set(false)
+									end,
+								}
+							}
+						})
+
+					end
+
+				end,
+			})
+
+			local oresChoosen = Tab2:CreateLabel("No Fruits Choosen")
+			local text = ""
+
+			local Input = Tab2:CreateInput({
+				Name = "Fruit Name",
+				Info = "Capital letters or not it doesnt matter", -- Speaks for itself, Remove if none.
+				PlaceholderText = "Skrillex Fruit No Mi",
+				NumbersOnly = false, -- If the user can only type numbers.
+				OnEnter = true, -- Will callback only if the user pressed ENTER while being focused.
+				RemoveTextAfterFocusLost = true,
+				Callback = function(Text)
+
+					Text = string.lower(Text)
+
+					if table.find(choosenFruits, Text) then
+
+						table.remove(choosenFruits, table.find(choosenFruits, Text))
+
+					else
+
+						table.insert(choosenFruits, Text)
+
+					end
+
+					if string.match(text, Text) then
+
+						local newStr = nil
+
+						if string.match(text, ", " .. Text) then
+
+							newStr = string.gsub(text, ", " .. Text, "")
+
+						elseif string.match(text, Text .. ",") then
+
+							newStr = string.gsub(text, Text .. ",", "")
+
+						else
+
+							newStr = string.gsub(text, Text, "")
+
+						end
+
+						text = newStr
+						oresChoosen:Set(text)
+						return
+
+					end
+
+					if text == "" or text == " " then
+
+						oresChoosen:Set(Text)
+						text = Text
+
+					else
+
+						oresChoosen:Set(text .. ", " .. Text)
+						text = text .. ", " .. Text
+
+					end
+
+				end,
+			})
+
+			local RedeemCodes = Tab2:CreateButton({
+				Name = "Use Codes",
+				Info = "Different way of redeeming codes, may not redeem all", -- Speaks for itself, Remove if none.
+				Interact = 'Click',
+				Callback = function()
+					for _, v in pairs(game.Players:GetChildren()) do
+
+						if v.Name ~= player.Name then
+
+							for _, codes in pairs(v["MAIN_DATA"].Codes:GetChildren()) do
+								local args = {
+									[1] = "Codes",
+									[2] = "Redeem",
+									[3] = {
+										["Code"] = tostring(codes.Value)
+									}
+								}
+
+								game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+
+
+							end	
+						end
+
+					end
+
+				end,
+			})
+
+		end
+
+		game:GetService("RunService").Heartbeat:Connect(function()
+
+			local character = player.Character
+
+			if character then
+
+				root = character.HumanoidRootPart
+				hum = character.Humanoid
+
+			end
+
+			local scripttime = game.Workspace.DistributedGameTime
+			local seconds = scripttime % 60
+			local minutes = math.floor(scripttime / 60 % 60)
+			local hours = math.floor(scripttime / 3600)
+			local tempo = "0" .. string.format("%.0f", hours) .. "(Hour/s), " .. string.format("%.0f", minutes) .. "(Minute/s), " .. string.format("%.0f", seconds) .. "(Second/s)"
+			Timer:Set(tempo)
+
+
+			if wToggle then
+
+				if character then
+
+					if hum then
+
+						hum.WalkSpeed = speed
+
+					end
+
+				end
+
+			end
+
+			if jToggle then
+
+				if character then
+
+					if hum then
+
+						hum.JumpPower = jumpPower
+
+					end
+
+				end
+
+			end
+
+
+			if autoSpin == true then
+
+				if #choosenFruits > 0 then
+
+					local player = game.Players.LocalPlayer
+
+					local args = {
+						[1] = "FruitsHandler",
+						[2] = "Spin",
+						[3] = {}
+					}
+
+					game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+
+
+					local foundFruit = string.split(player.PlayerGui.UI.Spin.Topbar.TxT.Text, " : ")[2]
+
+					if table.find(choosenFruits, string.lower(foundFruit)) then
+
+						autoSpin = false
+						ASpin:Set(false)
+
+						Rayfield:Notify({
+							Title = "Azure Hub",
+							Content = "Compliments, You Found: " .. foundFruit,
+							Duration = 6.5,
+							Image = 4483362458,
+							Actions = { -- Notification Buttons
+							},
+						})
+
+					end
+
+
+				else
+
+					autoSpin = false
+					ASpin:Set(false)
+
+					Rayfield:Notify({
+						Title = "Azure Hub",
+						Content = "Select the fruits you want please",
+						Duration = 6.5,
+						Image = 4483362458,
+						Actions = { -- Notification Buttons
+						},
+					})
+
+				end
+
+			end
+
+		end)
+
+		local count = 1
+		coroutine.wrap(function()
+
+			while task.wait(0.2) do
+
+				if autoSkill == true then
+
+					if not game.Workspace:FindFirstChild("SafePart") then
+
+						local part = Instance.new("Part", game.Workspace)
+						part.Name = "SafePart"
+						part.Anchored = true
+						part.Position = Vector3.new(math.random(10000, 20000), 80000, math.random(10000, 100000))
+						player.Character.HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 10, 0)
+
+						part.Size = Vector3.new(700, 25, 700)
+
+					end
+
+					player.Character.HumanoidRootPart.CFrame = game.Workspace.SafePart.CFrame * CFrame.new(0, 15, 0)
+
+					if count > #choosenSlots then
+
+						count = 1
+
+					end
+
+					local key
+
+					if count == 1 then
+
+						key = "One"
+
+					elseif count == 2 then
+
+						key = "Two"
+
+					elseif count == 3 then
+
+						key = "Three"
+
+					elseif count == 4 then
+
+						key = "Four"
+
+					elseif count == 5 then
+
+						key = "Five"
+
+					elseif count == 6 then
+
+						key = "Six"
+
+					elseif count == 7 then
+
+						key = "Seven"
+
+					end
+
+					local stam = tonumber(string.split(player.PlayerGui.UI.HUD.Bars.ProgressStamina.Text, "/")[1])
+
+					N:SendKeyEvent(true,key,false,game)
+					local x, y = 0, 0
+
+					task.wait(0.2)
+					N:SendMouseButtonEvent(x, y, 0, true, game, 0)
+					task.wait(0.2)
+					N:SendMouseButtonEvent(x, y, 0, false, game, 0)
+
+					count = count + 1
+
+					if stam <= 40 then
+
+						character.Humanoid.Health = 0
+
+						task.wait(1)
+
+						local args = {
+							[1] = "Core",
+							[2] = "LoadCharacter",
+							[3] = {}
+						}
+
+						game:GetService("ReplicatedStorage"):WaitForChild("ReplicatorNoYield"):FireServer(unpack(args))
+
+						task.wait(0.5)
+						local args = {
+							[1] = "Main",
+							[2] = "LoadCharacter"
+						}
+
+						game:GetService("ReplicatedStorage"):WaitForChild("ReplicatorNoYield"):FireServer(unpack(args))
+
+						player.PlayerGui.UI.HUD.Visible = true
+
+
+					end
+
+				end
+			end
+
+		end)()
+
+		Rayfield:LoadConfiguration()
+
+	elseif game.GameId == 2548183080 then -- Pillgrammed
+
+		getgenv().SecureMode = true
+		local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/IAmTheRealOne/CustomField/main/CustomFieldLoader'))()
+		local Window = nil
+		local player = game.Players.LocalPlayer
+		local character = player.Character or player.CharacterAdded:Wait()
+		local root
+		local hum
+		if character then
+			root = character.HumanoidRootPart
+			hum = character.Humanoid
+		end
+		local tw = game:GetService("TweenService")
+		local debris = game:GetService("Debris")
+		local adminIds = {21518356, 62228398, 429353334, 47994743, 39577287, 3199092988, 106535875, 276191915, 163879211, 78143663, 75775077, 283997152}
+		local synapse = false
+
+		function checkAdmin(plr)
+
+			if table.find(adminIds, plr.UserId) then
+
+				return true
+
+			else
+
+				return false
+
+			end
+
+		end
+
+
+		if isPremium then
+
+			Window = Rayfield:CreateWindow({
+				Name = "Azure Hub Pro",
+				LoadingTitle = "Azure Hub Pro",
+				LoadingSubtitle = "By Skrillex#6300",
+				ConfigurationSaving = {
+					Enabled = true,
+					FolderName = "AzureHub", -- Create a custom folder for your hub/game
+					FileName = "AzureHubPilgrammed"
+				},
+				Discord = {
+					Enabled = false,
+					Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+					RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+				},
+				KeySystem = false, -- Set this to true to use our key system
+				KeySettings = {
+					Title = "Sirius Hub",
+					Subtitle = "Key System",
+					Note = "Join the discord (discord.gg/sirius)",
+					FileName = "SiriusKey",
+					SaveKey = true,
+					GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+					Key = "Hello"
+				}
+			})
+
+
+		else
+
+			Window = Rayfield:CreateWindow({
+				Name = "Azure Hub",
+				LoadingTitle = "Azure Hub",
+				LoadingSubtitle = "By Skrillex#6300",
+				ConfigurationSaving = {
+					Enabled = true,
+					FolderName = "AzureHub", -- Create a custom folder for your hub/game
+					FileName = "AzureHubPilgrammed"
+				},
+				Discord = {
+					Enabled = true,
+					Invite = "KvM87FJHEj", -- The Discord invite code, do not include discord.gg/
+					RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+				},
+				KeySystem = false, -- Set this to true to use our key system
+				KeySettings = {
+					Title = "Sirius Hub",
+					Subtitle = "https://discord.gg/KvM87FJHEj",
+					Note = "Join the discord (https://discord.gg/KvM87FJHEj)",
+					FileName = "SiriusKey",
+					SaveKey = true,
+					GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+					Key = "Hello"
+				}
+			})
+
+		end
+
+		local oEsp = false
+
+		function WTS(part)
+			local screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+			return Vector2.new(screen.x, screen.y)
+		end
+
+		function addESP(part, text, color)
+
+			local esp = Instance.new("BoolValue", part)
+			esp.Name = "Esp"
+
+			local name = Drawing.new("Text")
+			name.Text = text
+			name.Color = color
+			name.Position = WTS(part)
+			name.Size = 20.0
+			name.Outline = true
+			name.Center = true
+			name.Visible = true
+
+			local conn
+			conn = game:GetService("RunService").Stepped:connect(function()
+				if oEsp == false then
+
+					name:Remove()
+
+					conn:Disconnect()
+
+				end
+
+				local destroyed = not part:IsDescendantOf(workspace)
+				if destroyed and name ~= nil then
+					name:Remove()
+				end
+				if part ~= nil then
+					name.Position = WTS(part)
+				end
+				local _, screen = workspace.CurrentCamera:WorldToViewportPoint(part.Position)
+				if screen then
+					name.Visible = true
+				else
+					name.Visible = false
+				end
+			end)
+		end
+
+		local Home = Window:CreateTab("Home") -- Title, Image
+
+		local Tab
+		if isPremium == true then
+			Tab = Window:CreateTab("Main") -- Title, Image
+		end	
+
+		local aDeposit = false
+		local rSpeed = nil
+		local npcs = {}
+		local mobs = {}
+		local weapons = {}
+		local map = {}
+		local ores = {}
+		local pickaxes = {}
+		local wasCanCollide = {}
+		local bad = {}
+		local pingBased = 45
+		local aPBlockTime = 0.3
+		local N = game:GetService("VirtualInputManager")
+		local currentNpc = nil
+		local aFarm = false
+		local selectedMob = nil
+		local selectedNpc = nil
+		local currentOre = nil
+		local selectedWeapon = nil
+		local selectedPickaxe = nil
+		local selectedMap = nil
+		local selectedOre = nil
+		local mFarm = false
+		local oFarm = false
+		local sGodMode = false
+		local betterLighting = false
+		local aP = false
+		local fakeSea = false
+		local selectedCFrame = nil
+		local randomChar = false
+		local basedOnAnim = true
+		local noDashCD = false
+		local autoDodge = false
+		local aPDistance = 15
+		local holdToSpam = false
+		local choosenColor = Color3.fromRGB(255, 255, 255)
+		local tpMethod = "Instant"
+		local distance = 7
+		local delay = 1
+		local baseDelay = 0.15
+		local method = "Behind"
+
+		for _, v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+
+			table.insert(npcs, v.Name)
+
+		end
+
+		for _, v in pairs(game:GetService("Workspace").Map:GetChildren()) do
+
+			if not table.find(map, v.Name) then
+
+				table.insert(map, v.Name)
+
+			end
+
+		end
+
+		for _, v in pairs(player.Backpack:GetChildren()) do
+
+			if not table.find(weapons, v.Name) then
+
+				table.insert(weapons, v.Name)
+
+			end
+		end
+
+		for _, v in pairs(game:GetService("Workspace").Mobs:GetDescendants()) do
+
+			if v:FindFirstChild("Human") or v:FindFirstChild("Humanoid") or v:FindFirstChild("HumanoidRootPart") then
+
+				if not table.find(mobs, v.Name) then
+
+					table.insert(mobs, v.Name)
+
+				end
+			end
+		end
+
+		for _, v in pairs(game:GetService("Workspace").Ores:GetDescendants()) do
+
+			if v.Name == "Part" then
+
+				if not table.find(ores, v.Name) then
+
+					table.insert(ores, v.Name)
+
+				end
+			end
+		end
+
+		for _, v in pairs(player.Backpack:GetChildren()) do
+
+			if not table.find(pickaxes, v.Name) and string.match(v.Name, "Pickaxe") then
+
+				table.insert(pickaxes, v.Name)
+
+			end
+		end
+
+		local Utilities = Home:CreateSection("Utilities", false)
+
+		local Timer = Home:CreateLabel("00:00:00")
+
+
+		local InfRandomChar = Home:CreateToggle({
+			Name = "Rainbow Character",
+			Info = "RAINBOOOW!!!!", -- Speaks for itself, Remove if none.
+			CurrentValue = false,
+			Flag = "RainbowChar", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				randomChar = Value
+
+			end
+		})
+
+		local WalkOnWater = Home:CreateToggle({
+			Name = "Walk On Water",
+			CurrentValue = false,
+			Flag = "WalkOnWater", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				fakeSea = Value
+
+				if Value == true then
+
+					local part = Instance.new("Part", game.Workspace)
+					part.Name = "FakeSea"
+					part.CanCollide = true
+					part.Anchored = true
+					part.Transparency = 0.6
+					part.Size = Vector3.new(99999999, 2, 9099999999)
+
+				else
+
+					if game.Workspace:FindFirstChild("FakeSea") then
+
+						game.Workspace.FakeSea:Destroy()
+
+					end
+
+				end
+			end
+		})
+
+		local fullBright = Home:CreateToggle({
+			Name = "Full Bright",
+			CurrentValue = false,
+			Flag = "FullBright", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				betterLighting = Value
+
+			end
+		})
+
+
+		local ContextActionService = game:GetService("ContextActionService")
+		local Multitool = true
+		local SpamTool = false
+		local function SortTools(a,b)
+			return a:GetAttribute("Damage") > b:GetAttribute("Damage")
+		end
+		local AutoFarm
+		local AutoMeteorite
+		local mTool = false
+
+		local function MultitoolConnection(Action, State, Input)
+			if Multitool and player.Character and mTool then
+				local Tools = {}
+				local CurrentTool = player.Character:FindFirstChildOfClass("Tool")
+				if State == Enum.UserInputState.Begin and CurrentTool and CurrentTool:FindFirstChild("Slash") and not string.find(CurrentTool.Name, "Pick") then
+					local Children = player.Backpack:GetChildren()
+					if player.Character then
+						local CharacterChildren = player.Character:GetChildren()
+						local BackpackChildren = Children
+						Children = table.create(#BackpackChildren + #CharacterChildren)
+						table.move(BackpackChildren, 1, #BackpackChildren, 1, Children)
+						table.move(CharacterChildren, 1, #CharacterChildren, #Children+1, Children)
+					end
+					for _,v in ipairs(Children) do
+						if v:IsA("Tool") and v:GetAttribute("Type") == CurrentTool:GetAttribute("Type") then
+							table.insert(Tools,v)
+							v.Parent = player.Character
+						end
+					end
+					table.sort(Tools,SortTools)
+					for _,v in ipairs(Tools) do
+						if player.Character:FindFirstChild("Cooldown") then
+							player.Character.Cooldown:Destroy()
+						end
+						spawn(function()
+							-- v:Activate()
+							v.Slash:FireServer(1)
+						end)
+					end
+				elseif CurrentTool ~= nil then
+					if State == Enum.UserInputState.Begin then
+						CurrentTool:Activate()
+					elseif State == Enum.UserInputState.End then
+						CurrentTool:Deactivate()
+					end
+				end
+			end
+		end
+
+		ContextActionService:BindActionAtPriority("Toggle",function(Action, State, Input)
+			if Input.UserInputType == Enum.UserInputType.MouseButton1 and State == Enum.UserInputState.Begin then
+				Multitool = true
+				return
+			end
+		end,false,Enum.ContextActionPriority.High.Value,Enum.KeyCode.H,Enum.KeyCode.T)
+
+		local ex = identifyexecutor()
+
+		if string.match(ex, "Synapse") then
+			local Cooldown; Cooldown = hookfunction(wait, function(v)
+				if not checkcaller() then
+					if noDashCD == true then
+						v = 0;
+					end
+				end
+				return Cooldown(v);
+			end);
+		end	
+
+		if isPremium == true then
+
+			local nDashCD = Home:CreateToggle({
+				Name = "No Dash CD/Parry",
+				CurrentValue = false,
+				Flag = "NoDashCD", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					noDashCD = Value
+
+				end
+			})
+
+			local More = Home:CreateSection("Combat", false)
+
+			local Farming = Tab:CreateSection("Farming", false)
+
+			AutoFarm = Tab:CreateToggle({
+				Name = "Auto Farm",
+				CurrentValue = false,
+				Flag = "AutoFarm", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					aFarm = Value
+
+					if Value == false then
+
+						for _, v in pairs(wasCanCollide) do
+
+							if player.Character:FindFirstChild(v) then
+
+								player.Character:FindFirstChild(v).CanCollide = true
+
+							end
+
+						end
+
+						wasCanCollide = {}
+
+					end
+
+				end
+			})
+
+			local MobsDropdown = Tab:CreateDropdown({
+				Name = "Mobs",
+				Options = mobs,
+				CurrentOption = "",
+				Flag = "Mobs", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Option)
+
+					currentNpc = nil
+					selectedNpc = Option
+
+				end
+
+			})
+
+			local Distance = Tab:CreateSlider({
+				Name = "Distance",
+				Range = {0, 15},
+				Increment = 0.1,
+				Suffix = "Distance",
+				CurrentValue = 5,
+				Flag = "Distance", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+					distance = Value
+				end
+			})
+
+			local Delay = Tab:CreateSlider({
+				Name = "Delay (Important)",
+				Info = "Delay each kill put atleast a 2 if its too easy", -- Speaks for itself, Remove if none.
+				Range = {0, 2},
+				Increment = 0.01,
+				Suffix = "Seconds",
+				CurrentValue = 2,
+				Flag = "Distance", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+					delay = Value
+				end
+			})
+
+			local MobsRefresh = Tab:CreateButton({
+				Name = "Refresh Mobs",
+				Interact = 'Click',
+				Callback = function()
+
+					mobs = {}
+
+					for _, v in pairs(game:GetService("Workspace").Mobs:GetDescendants()) do
+
+						if v:FindFirstChild("Human") or v:FindFirstChild("Humanoid") or v:FindFirstChild("HumanoidRootPart") then
+
+							if not table.find(mobs, v.Name) then
+
+								table.insert(mobs, v.Name)
+
+							end
+						end
+					end
+
+					MobsDropdown:Refresh(mobs, "")
+
+				end
+
+			})
+
+			local WeaponToUse = Tab:CreateDropdown({
+				Name = "Weapons",
+				Options = weapons,
+				CurrentOption = "",
+				Flag = "Weapons", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Option)
+
+					selectedWeapon = Option
+
+				end
+
+			})
+
+			local WeaponRefresh = Tab:CreateButton({
+				Name = "Refresh Weapons",
+				Interact = 'Click',
+				Callback = function()
+
+					weapons = {}
+
+					for _, v in pairs(player.Backpack:GetChildren()) do
+
+						if not table.find(weapons, v.Name) then
+
+							table.insert(weapons, v.Name)
+
+						end
+					end
+
+					WeaponToUse:Refresh(weapons, "")
+
+				end
+
+			})
+
+			player.Backpack.ChildAdded:Connect(function()
+
+				weapons = {}
+
+				for _, v in pairs(player.Backpack:GetChildren()) do
+
+					if not table.find(weapons, v.Name) then
+
+						table.insert(weapons, v.Name)
+
+					end
+				end
+
+				WeaponToUse:Refresh(weapons, "")
+
+			end)
+			
+			local WeaponStack = Tab:CreateToggle({
+				Name = "Weapon Stack",
+				Info = "Credits To: Aidez#9632",
+				CurrentValue = false,
+				Flag = "WeaponStack", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					mTool = Value
+
+					MultitoolConnection(nil,Enum.UserInputState.Begin,nil)
+
+				end
+			})
+			
+			local HoldToSpam = Tab:CreateToggle({
+				Name = "Hold To Spam Weapon Stack",
+				CurrentValue = false,
+				Flag = "HoldToSpam", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					holdToSpam = Value
+
+				end
+			})
+
+			local DeselectWeapons = Tab:CreateButton({
+				Name = "Deselect Weapon",
+				Info = "If you cant unequip the weapon click this",
+				Interact = 'Click',
+				Callback = function()
+
+					for _, v in pairs(player.Character:GetChildren()) do
+
+						if v:IsA("Tool") then
+
+							v.Parent = player.Backpack
+
+						end
+					end
+
+				end
+
+			})
+
+			local Method = Tab:CreateDropdown({
+				Name = "Method",
+				Options = {"Behind", "Above", "Under"},
+				CurrentOption = "Behind",
+				Flag = "Method", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Option)
+
+					method = Option
+
+				end
+
+			})
+
+			local TPMethod = Tab:CreateDropdown({
+				Name = "Tp Method",
+				Options = {"Instant","Tween"},
+				CurrentOption = "Instant",
+				Flag = "TpMethod", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Option)
+
+					tpMethod = Option
+
+				end
+
+			})
+
+			local More = Tab:CreateSection("More", false)
+
+			AutoMeteorite = Tab:CreateToggle({
+				Name = "Meteorite Farm",
+				CurrentValue = false,
+				Flag = "Meteorite Farm", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					mFarm = Value
+
+					if Value == false then
+
+						currentNpc = nil
+
+					end
+
+				end
+			})
+
+			local aDodge = Home:CreateToggle({
+				Name = "Better God Mode",
+				CurrentValue = false,
+				Flag = "BGodMode", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					autoDodge = Value
+
+				end
+			})
+
+			local AutoParry = Home:CreateToggle({
+				Name = "Auto Parry",
+				CurrentValue = false,
+				Flag = "Ap", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					aP = Value
+
+				end
+			})
+
+			local ApHoldBlockTime = Home:CreateSlider({
+				Name = "Auto Parry Block Time",
+				Range = {0, 1},
+				Increment = 0.01,
+				Suffix = "Bananas",
+				CurrentValue = 0.15,
+				Flag = "ApBlockTime", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+					aPBlockTime = Value
+				end
+			})
+
+			local ApSize = Home:CreateSlider({
+				Name = "Distance",
+				Range = {0, 100},
+				Increment = 0.1,
+				Suffix = "Distance",
+				CurrentValue = 15,
+				Flag = "ApDistance", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					aPDistance = Value
+
+				end
+			})
+
+			character.ChildAdded:Connect(function(child)
+
+				if child:IsA("Tool") then
+
+					if mTool then
+
+						MultitoolConnection(nil,Enum.UserInputState.Begin,nil)
+
+					end
+
+				end
+
+			end)
+
+		end	
+
+		local Tab2 = Window:CreateTab("Misc") -- Title, Image
+
+		local SemiGodMode = Home:CreateToggle({
+			Name = "Semi God",
+			CurrentValue = false,
+			Flag = "SG", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				sGodMode = Value
+
+			end
+		})
+
+		local Teleports = Tab2:CreateSection("Teleports", false)
+
+		local NpcsDropdown = Tab2:CreateDropdown({
+			Name = "Npcs",
+			Options = npcs,
+			CurrentOption = "",
+			Flag = "Npcs", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Option)
+
+				if game.Workspace.NPCs:FindFirstChild(Option) then
+
+					selectedNpc = Option
+
+				end
+			end
+
+		})
+
+		local teleportToNpc = Tab2:CreateButton({
+			Name = "Teleport",
+			Interact = 'Click',
+			Callback = function()
+
+				if game.Workspace.NPCs:FindFirstChild(selectedNpc) then
+					character.HumanoidRootPart.CFrame = game.Workspace.NPCs:FindFirstChild(selectedNpc).PrimaryPart.CFrame
+				end
+
+			end
+
+		})
+
+		local MapDropdown = Tab2:CreateDropdown({
+			Name = "Zone",
+			Options = map,
+			CurrentOption = "",
+			Flag = "Zones", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Option)
+
+				if game.Workspace.Map:FindFirstChild(Option) then
+
+					selectedMap = Option
+
+				end
+			end
+
+		})
+
+		local teleportToMap = Tab2:CreateButton({
+			Name = "Teleport",
+			Interact = 'Click',
+			Callback = function()
+
+				if game.Workspace.Map:FindFirstChild(selectedMap) then
+					character.HumanoidRootPart.CFrame = game.Workspace.Map:FindFirstChild(selectedMap).Part.CFrame *
+						CFrame.new(0, 35, 0)
+				end
+
+			end
+
+		})
+
+		local GetAllMirrors = Tab2:CreateButton({
+			Name = "Get All Mirrors",
+			Interact = 'Click',
+			Callback = function()
+
+				for _, v in pairs(game.Workspace.Mirrors:GetChildren()) do
+
+					local args = {
+						[1] = v.Name
+					}
+
+					game:GetService("ReplicatedStorage").Remotes.Mirror:FireServer(unpack(args))
+
+				end
+
+				Rayfield:Notify({
+					Title = "Azure Hub",
+					Content = "You unlocked all the mirrors!",
+					Duration = 6.5,
+					Image = 4483362458,
+					Actions = { -- Notification Buttons
+						Ignore = {
+							Name = "Thanks Dwaddy :3",
+							Callback = function()
+
+							end
+						}
+					}
+				})
+
+			end
+		})
+
+		local Utilities2 = Tab2:CreateSection("Utilities", false)
+
+		local RunningSpeed = Tab2:CreateSlider({
+			Name = "Running Speed",
+			Range = {0, 15},
+			Increment = 0.01,
+			Suffix = "Speed",
+			CurrentValue = 0,
+			Flag = "RunningSpeed", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+				rSpeed = Value
+			end
+		})
+
+		local JumpingPower = Tab2:CreateSlider({
+			Name = "Jump Power",
+			Range = {0, 200},
+			Increment = 0.1,
+			Suffix = "Power",
+			CurrentValue = 0,
+			Flag = "JumpPower", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+				player.ArmorStats.JumpPower.Value = Value
+			end
+		})
+
+		local StoredGold = Tab2:CreateLabel("Stored Gold: " .. player.PlayerStats.Bank.Value)
+
+		player.PlayerStats.Bank.Changed:Connect(function()
+
+			StoredGold:Set("Stored Gold: " .. player.PlayerStats.Bank.Value)
+
+		end)
+
+		local AutoDeposit = Tab2:CreateToggle({
+			Name = "Auto Deposit",
+			CurrentValue = false,
+			Flag = "AutoDeposit", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				aDeposit = Value
+
+			end
+		})
+
+		local TakeHalf = Tab2:CreateButton({
+			Name = "Take Half",
+			Interact = 'Click',
+			Callback = function()
+
+				local args = {
+					[1] = false,
+					[2] = 0.5
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.Bank:InvokeServer(unpack(args))
+
+			end
+		})
+
+		local TakeAll = Tab2:CreateButton({
+			Name = "Take All",
+			Interact = 'Click',
+			Callback = function()
+
+				local args = {
+					[1] = false,
+					[2] = 1
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.Bank:InvokeServer(unpack(args))
+
+			end
+		})
+
+		local DepositHalf = Tab2:CreateButton({
+			Name = "Deposit Half",
+			Interact = 'Click',
+			Callback = function()
+
+				local args = {
+					[1] = true,
+					[2] = 0.5
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.Bank:InvokeServer(unpack(args))
+
+			end
+		})
+
+		local DepositAll = Tab2:CreateButton({
+			Name = "Deposit All",
+			Interact = 'Click',
+			Callback = function()
+
+				local args = {
+					[1] = true,
+					[2] = 1
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.Bank:InvokeServer(unpack(args))
+
+			end
+		})
+
+		local Extra = Tab2:CreateSection("Extras", false)
+
+		local CFrameSaving = Tab2:CreateKeybind({
+			Name = "CFrame Saving",
+			CurrentKeybind = "J",
+			HoldToInteract = false,
+			Flag = "CFrameSaving", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Keybind)
+
+				selectedCFrame = root.CFrame
+
+			end
+		})
+
+		local CFrameTeleport = Tab2:CreateKeybind({
+			Name = "CFrame Teleport",
+			CurrentKeybind = "H",
+			HoldToInteract = false,
+			Flag = "CFrameTeleport", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Keybind)
+				if selectedCFrame then
+
+					root.CFrame = selectedCFrame
+
+				end
+
+			end
+		})
+
+		local Tab3 = Window:CreateTab("Misc 2") -- Title, Image
+
+		for _, v in pairs(game:GetService("Workspace").Ores:GetDescendants()) do
+
+			if v.Parent.Name == "Part" then
+
+				if not table.find(ores, v.Name) then
+
+					table.insert(ores, v.Name)
+
+				end
+			end
+		end
+
+		local Ores = Tab3:CreateSection("Ores", false)
+
+		local choosenOres = {}
+
+		local OreEsp = Tab3:CreateToggle({
+			Name = "Ore Esp",
+			CurrentValue = false,
+			Flag = "OreEsp", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				oEsp = Value
+
+				if Value == false then
+
+					for _, v in pairs(game.Workspace.Ores:GetDescendants()) do
+
+						if v:FindFirstChild("Esp") then
+
+							v.Esp:Destroy()
+
+						end
+
+					end
+
+				end
+
+			end
+		})
+
+		local oresChoosen = Tab3:CreateLabel("Esp: None")
+		local text = ""
+
+		local oresToChoose = Tab3:CreateDropdown({
+			Name = "Ores",
+			Options = ores,
+			CurrentOption = "",
+			Flag = "Ores", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Option)
+
+				if table.find(choosenOres, Option) then
+
+					table.remove(choosenOres, table.find(choosenOres, Option))
+
+				else
+
+					table.insert(choosenOres, Option)
+
+				end
+
+				if string.match(text, Option) then
+
+					local newStr = nil
+
+					if string.match(text, ", " .. Option) then
+
+						newStr = string.gsub(text, ", " .. Option, "")
+
+					elseif string.match(text, Option .. ",") then
+
+						newStr = string.gsub(text, Option .. ",", "")
+
+					else
+
+						newStr = string.gsub(text, Option, "")
+
+					end
+
+					text = newStr
+					oresChoosen:Set(text)
+					return
+
+				end
+
+				if text == "" or text == " " then
+
+					oresChoosen:Set(Option)
+					text = Option
+
+				else
+
+					oresChoosen:Set(text .. ", " .. Option)
+					text = text .. ", " .. Option
+
+				end
+
+			end
+
+		})
+
+		local AutoOre = Tab3:CreateToggle({
+			Name = "Auto Ore",
+			CurrentValue = false,
+			Flag = "AutoOre", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				oFarm = Value
+
+			end
+		})
+
+		local PickaxeToUse = Tab3:CreateDropdown({
+			Name = "Pickaxes",
+			Options = pickaxes,
+			CurrentOption = "",
+			Flag = "Pickaxes", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Option)
+
+				selectedPickaxe = Option
+
+			end
+
+		})
+
+		local PickaxeRefresh = Tab3:CreateButton({
+			Name = "Refresh Pickaxes",
+			Interact = 'Click',
+			Callback = function()
+
+				pickaxes = {}
+
+				for _, v in pairs(player.Backpack:GetChildren()) do
+
+					if not table.find(pickaxes, v.Name) and string.match(v.Name, "Pickaxe") then
+
+						table.insert(pickaxes, v.Name)
+
+					end
+				end
+
+				PickaxeToUse:Refresh(pickaxes, "")
+
+			end
+
+		})
+
+		local MaterialsToMine = Tab3:CreateDropdown({
+			Name = "Ores",
+			Options = ores,
+			CurrentOption = "",
+			Flag = "OresToMine", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Option)
+
+				selectedOre = Option
+				currentOre = nil
+
+			end
+
+		})
+
+		local RefreshOres = Tab3:CreateButton({
+			Name = "Refresh Ores",
+			Interact = 'Click',
+			Callback = function()
+
+				ores = {}
+
+				for _, v in pairs(game:GetService("Workspace").Ores:GetDescendants()) do
+
+					if v.Parent.Name == "Part" then
+
+						if not table.find(ores, v.Name) then
+
+							table.insert(ores, v.Name)
+
+						end
+					end
+				end
+
+				MaterialsToMine:Refresh(ores, "None")
+				oresToChoose:Refresh(ores, "")
+
+			end
+
+		})
+
+		if isPremium == true then
+
+			local Notifiers = Window:CreateTab("Notifiers") -- Title, Image
+
+			local MeteoriteNotifier = Notifiers:CreateToggle({
+				Name = "Meteorite Notifier",
+				CurrentValue = false,
+				Flag = "Meteorite Notifier", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Value)
+
+					if Value == true then
+
+						game.Workspace.Mobs.ChildAdded:Connect(function(child)
+
+							if Value == true then
+
+								local mob = child
+
+								if mob and mob:IsA("Model") then
+
+									if string.match(mob.Name, "Imp") or string.match(mob.Name, "King") or string.match(mob.Name, "Slime") or string.match(string.lower(mob.Name), "skeletron") then
+
+										return
+
+									else
+
+										if string.match(mob.Name, "Raider") or string.match(mob.Name, "Pebble") or string.match(mob.Name, "Thief") then
+
+											Rayfield:Notify({
+												Title = "Azure Hub",
+												Content = "Ayo Meteorite get up loser",
+												Duration = 6.5,
+												Image = 4483362458,
+												Actions = { -- Notification Buttons
+												},
+											})
+
+											local audio = Instance.new("Sound", game.Workspace)
+											audio.SoundId = "rbxassetid://835068435"
+											audio.Volume = 10
+											audio:Play()
+											debris:AddItem(audio, audio.TimeLength)
+
+
+										end
+									end
+
+
+								end
+
+							end
+
+						end)
+
+					end
+
+				end
+			})
+
+		end	
+
+		local onAdminJoin = "Kick"
+
+		if isPremium == true then
+
+			local Tab4 = Window:CreateTab("Extra") -- Title, Image
+
+			local OnAdmin = Tab4:CreateDropdown({
+				Name = "Admin Join",
+				Options = {"Kick", "Notify"},
+				CurrentOption = "",
+				Flag = "OnAdminJoin", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+				Callback = function(Option)
+					onAdminJoin = Option
+				end,
+			})
+
+		end	
+
+		game.Players.PlayerAdded:Connect(function(bru)
+
+			if checkAdmin(bru) == true then
+
+				local timeInfo = os.date("*t")
+
+				if onAdminJoin == "Kick" then
+
+					player:Kick("Admin Joined: " .. bru.Name .. " UserId: " .. bru.UserId .. " At: " .. timeInfo.hour .. ":" .. timeInfo.min)
+
+				elseif onAdminJoin == "Notify" then
+
+					Rayfield:Notify({
+						Title = "Azure Hub",
+						Content = "ADMIN JOINED: " .. bru.Name .. " / UserId: " .. bru.UserId,
+						Duration = 6.5,
+						Image = 4483362458,
+						Actions = { -- Notification Buttons
+							Ignore = {
+								Name = "Okay!",
+								Callback = function()
+									print("The user tapped Okay!")
+								end
+							},
+						},
+					})
+
+					local audio = Instance.new("Sound", game.Workspace)
+					audio.SoundId = "rbxassetid://835068435"
+					audio.Volume = 10
+					audio:Play()
+					debris:AddItem(audio, audio.TimeLength)
+
+
+				end
+
+			end
+
+		end)
+
+		local hideName = false
+
+		local HideUser = Home:CreateToggle({
+			Name = "Hide User",
+			CurrentValue = false,
+			Flag = "HideUser", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			Callback = function(Value)
+
+				hideName = Value
+
+				if Value == false then
+
+					Rayfield:Notify({
+						Title = "Azure Hub",
+						Content = "Reset to show the name again",
+						Duration = 6.5,
+						Image = 4483362458,
+						Actions = { -- Notification Buttons
+						},
+					})
+
+				end
+
+			end
+		})
+
+		if player.ArmorStats.JumpPower.Value > 0 then
+
+			Rayfield:Notify({
+				Title = "Azure Hub",
+				Content = "You may have a jump boost on",
+				Duration = 6.5,
+				Image = 4483362458,
+				Actions = { -- Notification Buttons
+				},
+			})
+
+
+		end
+
+		if player.ArmorStats.SpeedBoost.Value > 0 then
+
+			Rayfield:Notify({
+				Title = "Azure Hub",
+				Content = "You may have a speed boost on",
+				Duration = 6.5,
+				Image = 4483362458,
+				Actions = { -- Notification Buttons
+				},
+			})
+
+		end
+
+		local lastKill = os.clock()
+		local lastOre = os.clock()
+		
+		local holdingMouse1 = false
+		local uis = game:GetService("UserInputService")
+		
+		uis.InputBegan:Connect(function(inp, typin)
+			
+			if typin then
+				
+				return
+				
+			end
+			
+			if inp.UserInputType == Enum.UserInputType.MouseButton1 then
+				
+				holdingMouse1 = true
+				
+			end
+			
+		end)
+		
+		uis.InputEnded:Connect(function(inp, typin)
+
+			if typin then
+
+				return
+
+			end
+
+			if inp.UserInputType == Enum.UserInputType.MouseButton1 then
+
+				holdingMouse1 = false
+
+			end
+
+		end)
+
+		game:GetService("RunService").RenderStepped:Connect(function()
+
+			character = player.Character or player.CharacterAdded:Wait()
+
+			if not character then
+
+				return
+
+			end
+
+			root = character.HumanoidRootPart
+			hum = character.Humanoid
+
+			local scripttime = game.Workspace.DistributedGameTime
+			local seconds = scripttime % 60
+			local minutes = math.floor(scripttime / 60 % 60)
+			local hours = math.floor(scripttime / 3600)
+			local tempo = "0" .. string.format("%.0f", hours) .. "(Hour/s), " .. string.format("%.0f", minutes) .. "(Minute/s), " .. string.format("%.0f", seconds) .. "(Second/s)"
+			Timer:Set(tempo)
+			
+			if holdingMouse1 and holdToSpam then
+				
+				if character:FindFirstChildWhichIsA("Tool") then
+					
+					MultitoolConnection(nil,Enum.UserInputState.Begin,nil)
+					
+				end
+				
+			end
+			
+			if aDeposit == true then
+
+				local args = {
+					[1] = true,
+					[2] = 9999
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.Bank:InvokeServer(unpack(args))
+
+			end
+
+			if rSpeed ~= nil then
+
+				if rSpeed >= 0 then
+
+					player.ArmorStats.SpeedBoost.Value = rSpeed
+
+				end
+
+			end
+
+			if hideName == true then
+
+				if character then
+
+					if character.Head:FindFirstChild("PlayerBillboard") then
+
+						character.Head:FindFirstChild("PlayerBillboard"):Destroy()
+
+					end
+
+				end
+
+			end	
+
+			if oEsp == true then
+
+				for _, v in pairs(game.Workspace.Ores:GetDescendants()) do
+
+					if table.find(choosenOres, v.Name) then
+
+						if not v:FindFirstChild("Esp") then
+
+							local color = Color3.fromRGB(255, 255, 255)
+
+							if v.Name == "Copper" then
+
+								color = Color3.fromRGB(226, 155, 64)
+
+							elseif v.Name == "Tin" then
+
+								color = Color3.fromRGB(199, 212, 228)
+
+							elseif v.Name == "Demetal" then
+
+								color = Color3.fromRGB(154, 48, 39)
+
+							elseif v.Name == "Sulfur" then
+
+								color = Color3.fromRGB(253, 234, 141)
+
+							elseif v.Name == "Iron" then
+
+								color = Color3.fromRGB(124, 92, 70)
+
+							elseif v.Name == "Zinc" then
+
+								color = Color3.fromRGB(185, 196, 177)
+
+							elseif v.Name == "Diamond" then
+
+								color = Color3.fromRGB(173, 236, 243)
+
+							elseif v.Name == "Emerald" then
+
+								color = Color3.fromRGB(75, 151, 75)
+
+							elseif v.Name == "Mithril" then
+
+								color = Color3.fromRGB(128, 187, 219)
+
+							elseif v.Name == "Darksteel" then
+
+								color = Color3.fromRGB(27, 27, 27)
+
+							elseif v.Name == "Sapphire" then
+
+								color = Color3.fromRGB(13, 105, 172)
+
+							end
+
+							addESP(v, v.Name, color)
+
+						end
+
+					end
+
+				end
+			end
+
+			if fakeSea == true then
+
+				if character then
+
+					if character.HumanoidRootPart then
+
+						game.Workspace.FakeSea.Position = Vector3.new(root.Position.X, -30.7, root.Position.Z)
+
+					end
+
+				end
+
+			end
+
+			if betterLighting == true then
+
+				if game:GetService("Lighting"):FindFirstChild("Atmosphere") then
+
+					game:GetService("Lighting").Atmosphere:Destroy()
+
+				end
+
+				game:GetService("Lighting").Brightness = 2
+
+				game:GetService("Lighting").TimeOfDay = 10
+
+			end
+
+			if sGodMode == true then
+
+				game:GetService("ReplicatedStorage").Remotes.Roll:FireServer()
+
+			end
+
+			if mFarm then
+
+				local mob = game.Workspace.Mobs:FindFirstChildWhichIsA("Model")
+
+				if mob then
+
+					if string.match(mob.Name, "Imp") or string.match(mob.Name, "King") or string.match(mob.Name, "Slime") or string.match(string.lower(mob.Name), "skeletron") then
+
+						mob.Parent = game.Workspace
+
+						return
+
+					end
+
+					if string.match(mob.Name, "Raider") or string.match(mob.Name, "Pebble") or string.match(mob.Name, "Thief") then
+
+						aFarm = true
+						currentNpc = mob
+
+					end
+
+				end
+
+			end
+
+			if aFarm == true then
+
+				if selectedWeapon == nil then
+
+					Rayfield:Notify({
+						Title = "Azure Hub",
+						Content = "Select a weapon first",
+						Duration = 2,
+						Image = 4483362458,
+						Actions = { -- Notification Buttons
+						},
+					})
+
+
+					aFarm = false
+					mFarm = false
+
+					AutoFarm:Set(false)
+					mFarm:Set(false)
+
+					return
+
+				end
+
+				if character and not character:FindFirstChild(selectedWeapon) and character.Humanoid.Health > 0 then
+
+					if player.Backpack:FindFirstChild(selectedWeapon) then
+
+						player.Backpack:FindFirstChild(selectedWeapon).Parent = character
+
+					else
+
+						Rayfield:Notify({
+							Title = "Azure Hub",
+							Content = "You dont have the weapon you selected",
+							Duration = 6.5,
+							Image = 4483362458,
+							Actions = { -- Notification Buttons
+							},
+						})
+
+
+						aFarm = false
+
+						AutoFarm:Set(false)
+						mFarm:Set(false)
+
+						return
+
+					end
+
+				end
+
+				for i, v in pairs(character:GetDescendants()) do
+					if v:IsA("BasePart") and v.CanCollide == true then
+
+						if not table.find(wasCanCollide, v.Name) then
+							table.insert(wasCanCollide, v.Name)
+							v.CanCollide = false
+						end
+
+					end
+				end
+
+				if selectedNpc or mFarm == true then
+
+					if not currentNpc then
+
+						if os.clock() >= lastKill + delay then
+
+							for _, v in pairs(game.Workspace.Mobs:GetDescendants()) do
+
+								if v.Name == selectedNpc then
+
+									if v:FindFirstChild("Human") then
+
+										if v.Human.Health > 0 then
+
+											currentNpc = v
+
+										end
+									end
+								end
+							end
+						end
+					end
+
+					if currentNpc then
+
+						if currentNpc.Human.Health <= 0 then
+
+							currentNpc = nil
+
+							lastKill = os.clock()
+
+						end
+
+						if character then
+
+
+							if mTool == false then
+								character:FindFirstChild(selectedWeapon):Activate()
+							else
+								MultitoolConnection(nil,Enum.UserInputState.Begin,nil)
+							end	
+
+							if player.Character.Humanoid.Health <= 0 then
+
+								for _, v in pairs(player.Character:GetChildren()) do
+
+									if v:IsA("Tool") then
+
+										v.Parent = player.Backpack
+
+									end
+								end
+
+							end
+
+							if tpMethod == "Instant" then
+
+								if method == "Above" then
+									root.CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, distance, 0)
+									root.CFrame = CFrame.new(root.Position, currentNpc.HumanoidRootPart.Position)
+								elseif method == "Behind" then
+									root.CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, 0, distance)
+								elseif method == "Under" then
+									root.CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, -distance, 0)
+									root.CFrame = CFrame.new(root.Position, currentNpc.HumanoidRootPart.Position)
+								end
+
+							elseif tpMethod == "Tween" then
+
+								local delay2 = (root.Position - currentNpc.HumanoidRootPart.Position).magnitude / 100
+
+								if method == "Above" then
+									local tween = tw:Create(root, TweenInfo.new(delay2, Enum.EasingStyle.Linear,
+										Enum.EasingDirection.Out), {
+											CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, distance, 0)
+										})
+									tween:Play()
+									root.CFrame = CFrame.new(root.Position, currentNpc.HumanoidRootPart.Position)
+
+								elseif method == "Behind" then
+
+									local tween = tw:Create(root, TweenInfo.new(delay2, Enum.EasingStyle.Linear,
+										Enum.EasingDirection.Out), {
+											CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, 0, distance)
+										})
+									tween:Play()
+									root.CFrame = CFrame.new(root.Position, currentNpc.HumanoidRootPart.Position)
+
+								elseif method == "Under" then
+
+									local tween = tw:Create(root, TweenInfo.new(delay2, Enum.EasingStyle.Linear,
+										Enum.EasingDirection.Out), {
+											CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, -distance, 0)
+										})
+									tween:Play()
+									root.CFrame = CFrame.new(root.Position, currentNpc.HumanoidRootPart.Position)
+
+								end
+
+							end
+						end
+
+					end
+
+				end
+			end
+
+			if oFarm == true then
+
+				if selectedOre then
+
+					if selectedPickaxe == nil or selectedPickaxe == "" then
+
+						oFarm = false
+
+						AutoOre:Set(false)
+
+						Rayfield:Notify({
+							Title = "Azure Hub",
+							Content = "Select a pickaxe first",
+							Duration = 6.5,
+							Image = 4483362458,
+							Actions = { -- Notification Buttons
+							},
+						})
+
+
+						return
+
+					end
+
+					if not character:FindFirstChild(selectedPickaxe) then
+
+						if player.Backpack:FindFirstChild(selectedPickaxe) then
+
+							player.Backpack:FindFirstChild(selectedPickaxe).Parent = character
+
+						else
+
+							oFarm = false
+
+							AutoOre:Set(false)
+
+							Rayfield:Notify({
+								Title = "Azure Hub",
+								Content = "You dont have the pickaxe you selected",
+								Duration = 2,
+								Image = 4483362458,
+								Actions = { -- Notification Buttons
+								},
+							})
+
+
+							return
+
+						end
+
+					end
+
+					if currentOre == nil then
+
+						if os.clock() >= lastOre + 4 then
+
+							for _, v in pairs(game.Workspace.Ores:GetDescendants()) do
+
+								if v.Name == selectedOre then
+
+									currentOre = v.Parent
+
+								end
+							end
+						end
+					end
+
+					if not currentOre:FindFirstChild(selectedOre) then
+
+						currentOre = nil
+
+						lastOre = os.clock()
+
+					end
+
+					if currentOre then
+
+						if character then
+
+							character:FindFirstChild(selectedPickaxe):Activate()
+
+							root.CFrame = currentOre.CFrame * CFrame.new(0, 0, 5)
+
+						end
+
+					end
+
+				end
+
+			end
+
+		end)
+
+		local hair = {"Beatiful", "Messy", "Hunk", "Headband", "Monk", "MangaHero", "Charmer", "Animazing", "BrightEyes","FatherTime", "Afro", "Bald", "Beard", "Wizard", "Defaultio", "Equinox", "Balding", "Suave", "Pal", "Holly", "Jee", "NerdHair"}
+		local faces = {"Poor", "Good", "Doots", "Glee", "Tale", "Chill", "Wink", "Hate","Hmm", "Sure", "Scar", "Fearless"}
+		local choosenFolder = nil
+
+		local animationInfo = {}
+
+		function getInfo(id)
+			local success, info = pcall(function()
+				return game:GetService("MarketplaceService"):GetProductInfo(id)
+			end)
+			if success then
+				return info
+			end
+			return {Name=''}
+		end
+
+		local AnimNames = {
+			'slash',
+			'swing',
+			'sword',
+			'smash',
+			'slimeJump',
+			'slap',
+			'jump',
+			'clap',
+			'mushjump',
+			'head',
+			'slam',
+			'scream'
+
+		}
+
+		function playerAdded(v)
+			local function charadded(char)
+				local humanoid = char:WaitForChild("Human", 5)
+				humanoid.Animator.AnimationPlayed:Connect(function(track)
+					local info = animationInfo[track.Animation.AnimationId]
+					if not info then
+						info = getInfo(tonumber(track.Animation.AnimationId:match("%d+")))
+						animationInfo[track.Animation.AnimationId] = info
+					end
+
+					if (player.Character and player.Character:FindFirstChild("HumanoidRootPart") and char:FindFirstChild("HumanoidRootPart")) and (aP == true or autoDodge == true) then
+
+						local mag = (char.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude
+						if mag < aPDistance then
+
+							for _, animName in pairs(AnimNames) do
+								if string.match(string.lower(info.Name), animName) then
+
+									local timeToWait = track.Length * 0.65
+
+									if string.match(string.lower(info.Name), "mushslap") or string.match(string.lower(info.Name), "mushclap") or string.match(string.lower(info.Name), "mushhead") or v.Name == "Old Fart" then
+
+										timeToWait = track.Length * 0.4
+
+									end
+
+									if string.match(string.lower(info.Name), "slimejump") then
+
+										timeToWait = track.Length * 0.2
+
+									end
+
+									if string.match(string.lower(info.Name), "troll") then
+
+										timeToWait = track.Length * 0.45
+
+									end
+
+
+									if autoDodge == true then
+
+										task.delay(timeToWait * 0.7, function()
+
+											game:GetService("ReplicatedStorage").Remotes.Roll:FireServer()
+
+										end)
+
+									end
+
+									task.wait(timeToWait)
+
+									if aP == true then
+										local args = {
+											[1] = true
+										}
+
+										game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Block"):FireServer(unpack(args))
+									end
+
+									task.wait(aPBlockTime)
+
+									if aP == true then
+										local args = {
+											[1] = false
+										}
+
+										game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Block"):FireServer(unpack(args))
+									end
+
+								end
+							end
+						end
+					end
+				end)
+			end
+
+			v.Parent.ChildAdded:Connect(function(z)
+
+				charadded(z)
+
+			end)
+
+			charadded(v)
+		end
+
+		for _, v in pairs(game.Workspace.Mobs:GetDescendants()) do
+
+			if v:FindFirstChild("Human") then
+				playerAdded(v)
+			elseif v:IsA("Folder") then
+				v.ChildAdded:Connect(function(l)
+
+					playerAdded(l)
+
+				end)
+
+			end
+
+		end
+
+		Rayfield:LoadConfiguration()
+
+		coroutine.wrap(function()
+			while task.wait(0.14) do
+
+				if randomChar == true then
+
+					if not character then
+
+						return
+
+					end
+
+					character = player.Character or player.CharacterAdded:Wait()
+
+					if randomChar then
+
+						for i = 1, 255, 1 do
+							task.wait(0.05)
+
+							if randomChar == true then
+
+								local args = {
+									[1] = 1,
+									[2] = Color3.fromRGB(i * math.random(10, 100) / 10, i * math.random(1, 100) / 10, i * math.random(10, 100) / 10)
+								}
+
+								game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Hair"):FireServer(unpack(args))
+
+								local args = {
+									[1] = 3,
+									[2] =  Color3.fromRGB(i * math.random(10, 100) / 10, i * math.random(1, 100) / 10, i * math.random(10, 100) / 10)
+								}
+
+								game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Hair"):FireServer(unpack(args))
+
+
+							else
+
+								break
+
+							end
+						end
+					end
+				end
+			end
+		end)()
+
+		repeat
+			wait()
+		until game:IsLoaded()
+		wait()
+
+		if getconnections then
+			for _, v in next, getconnections(game:GetService("Players").LocalPlayer.Idled) do
+				v:Disable()
+			end
+		end
+
+		if not getconnections then
+			game:GetService("Players").LocalPlayer.Idled:connect(function()
+				game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+			end)
+
+		end
+
+	elseif game.GameId == 2719512531 then -- Reaper 2
+
+		local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/VisualRoblox/Roblox/main/UI-Libraries/Visual%20UI%20Library/Source.lua'))()
+		local Window = nil
+		local player = game.Players.LocalPlayer
+		local character = player.Character or player.CharacterAdded:Wait()
+		local root = character.HumanoidRootPart
+		local vm = game:GetService("VirtualInputManager")
+		local adminIds = {18770930, 124019182, 945001571, 91968776, 849206577, 2210661234, 149489769, 1783631538, 38097850, 341883196, 268646792, 66553053, 71915679, 100504006, 130903287, 1284723, 121372045, 130585012, 97411684, 63497590}
+		local synapse = false
+
+		local Name = "AzureHubReaper2.JSON"
+
+		local DefaultSettings = {
+
+			WebHook = nil,
+			BaseTransparency = 0.4,
+			AutoPrestige = false,
+			Auto50 = false,
+			AutoRun = false,
+			SafeFarm = false,
+			Distance = 5,
+			Mode = "",
+			LowHp = "",
+			Method = "Behind",
+			CloseUI = "RightControl",
+			Speed = 0,
+
+		}
+
+		local Settings
+
+		if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
+
+		Settings = game:service'HttpService':JSONDecode(readfile(Name))
+
+		local function Save()
+			writefile(Name,game:service'HttpService':JSONEncode(Settings))
+		end
+
+		local dropdown2 = nil
+
+		function checkAdmin(plr)
+
+			if isPremium == true then
+
+				if dropdown2 == nil then
+
+					return
+
+				end
+
+				for _, plr in pairs(game.Players:GetChildren()) do
+
+					if table.find(adminIds, plr.UserId) or plr:GetRankInGroup(10270109) > 1 and plr.UserId ~= player.UserId then
+
+						if dropdown2 == "Kick" then
+
+							player:Kick("Admin Found: " .. plr.Name .. " ID: " .. plr.UserId)
+
+						elseif dropdown2 == "Notify" then
+
+							Library:CreateNotification('ADMIN ALERT!', "Admin Found: " .. plr.Name .. " ID: " .. plr.UserId, 5)
+
+						elseif dropdown2 == "Rejoin" then
+
+							local ts = game:GetService("TeleportService")
+
+							ts:TeleportToPlaceInstance(game.PlaceId, game.JobId, player)
+
+						end
+
+					else
+
+						return false
+
+					end
+				end
+			end
+		end
+
+		if isPremium == true then
+			Window = Library:CreateWindow('Azure Hub Premium', 'Reaper 2 Premium', 'Azure Hub Pro', '', true, 'AzureHubReaper2', 'Default')
+		else
+			Window = Library:CreateWindow('Azure Hub', 'Reaper 2', 'Azure Hub', '', true, 'AzureHubReaper2', 'Default')
+		end	
+
+		local players = game.Players
+
+		local vu = game:GetService("VirtualUser")
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+			vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			wait(1)
+			vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		end)
+
+		local PlaceID = game.PlaceId
+		local AllIDs = {}
+		local foundAnything = ""
+		local actualHour = os.date("!*t").hour
+		local Deleted = false
+		local File = pcall(function()
+			AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+		end)
+		if not File then
+			table.insert(AllIDs, actualHour)
+			writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+		end
+
+		local player = game.Players.LocalPlayer
+		local hum = player.Character:WaitForChild("Humanoid")
+
+		local UIS = game:GetService("UserInputService")
+
+		if Settings.WebHook ~= nil then
+
+			Library:CreateNotification('Azure Hub', "Current Webhook: " .. Settings.WebHook, 5)
+
+		end	
+
+		if Settings.AutoRun == true and isPremium then
+
+			Library:CreateNotification('Azure Hub', 'Auto Run Active', 2.5)
+
+		end
+
+		if isPremium == false then
+
+
+
+		end
+
+		local Tab = Window:CreateTab('Main', true, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+		local Section = Tab:CreateSection('Auto Farm')
+
+		local oldPos = nil
+		local safePartSize = nil
+
+		local choosenMob = nil
+		local autoFarm = false
+		local resetIfLowReiatsu = false
+		local autoEquip = true
+		local choosenWeapon = nil
+		local choosingWeapon = false
+		local nonWeapon = {}
+		local foundWeapon = nil
+		local autoChooseQuest = false
+		local distance = Settings.Distance
+		local tablquest = {}
+		local questToAccept = nil
+		local EspActivated = false
+		local EspClicked = false
+		local autoQuest = false
+		local AutoRun = Settings.AutoRun
+		local skillsTable = {}
+		local aQuest
+		local hitCount = 0
+		local mode = Settings.Mode
+		local lowHp = Settings.LowHp
+		local SafeFarm = Settings.SafeFarm
+		local isHoldingW = false
+		local currentNpc = nil
+		local autoSecondary = false
+		local choosenSecondaries = {}
+		local hasFoundSecondary = false
+		local resetAfterMode = false
+		local justSpawned = false
+		local Speed = Settings.Speed
+		local method = Settings.Method
+
+		if Settings.LowHp == "" then
+
+			lowHp = hum.MaxHealth * 0.3
+
+		end
+
+		if isPremium == false then
+
+			local Toggle = Section:CreateToggle('Auto Mob', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				autoFarm = Value
+			end)
+
+			local Toggle = Section:CreateToggle('Reiatsu Reset', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				resetIfLowReiatsu = Value
+			end)
+
+			local mobs = {}
+			local Dropdown = Section:CreateDropdown('Mobs', mobs, nil, 0, function(Value)
+				choosenMob = Value
+			end)
+
+			for _, v in pairs(game.Workspace.Living:GetChildren()) do
+
+				if not table.find(mobs, v.Name) and not game.Players:FindFirstChild(v.Name) then
+
+					table.insert(mobs, v.Name)
+
+				end
+
+			end
+
+			Dropdown:UpdateDropdown(mobs)
+
+			local update = Section:CreateButton('Update Mobs', function()
+				for _, v in pairs(game.Workspace.Living:GetChildren()) do
+
+					if not table.find(mobs, v.Name) and not game.Players:FindFirstChild(v.Name) then
+
+						table.insert(mobs, v.Name)
+
+					end
+
+				end
+
+				Dropdown:UpdateDropdown(mobs)
+
+			end)
+
+			local Slider = Section:CreateSlider('Distance', 1, 15, 5, Color3.fromRGB(0, 125, 255), function(Value)
+				distance = Value
+				Settings.Distance = distance
+				Save()
+			end)
+
+			local Toggle = Section:CreateToggle('Safe Place', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				if Value == true then
+
+					local part = Instance.new("Part", game.Workspace)
+					part.Name = "SafePart"
+					part.Anchored = true
+					part.Position = Vector3.new(math.random(10000, 20000), 80000, math.random(10000, 100000))
+					oldPos = player.Character.HumanoidRootPart.CFrame
+					player.Character.HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 10, 0)
+					if safePartSize == nil then
+
+						part.Size = Vector3.new(500, 25, 500)
+
+					else
+
+						part.Size = Vector3.new(safePartSize, 10 + (safePartSize * 0.05) , safePartSize)
+
+					end
+
+				elseif Value == false and game.Workspace:FindFirstChild("SafePart") then
+
+					game.Workspace.SafePart:Destroy()
+					player.Character.HumanoidRootPart.CFrame = oldPos
+
+
+				end
+			end)
+
+		end
+
+		local Toggle = Section:CreateToggle('Auto Equip (Equip First)', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+
+			autoEquip = Value
+
+			if Value == true then
+
+				for _, v in pairs(character:GetChildren()) do
+
+					if not table.find(nonWeapon, v.Name) then
+
+						table.insert(nonWeapon, v.Name)
+
+						foundWeapon = v.Name
+
+					end
+				end
+
+				Library:CreatePrompt('TwoButton', 'Is this your weapon?', foundWeapon, {
+					'No',
+					function()
+						choosingWeapon = true
+					end,
+					'Yes',
+					function()
+						choosenWeapon = foundWeapon
+					end
+
+				})
+
+			end
+		end)
+
+		if isPremium then
+			local quests = Section:CreateDropdown('Quests', tablquest, nil, 0, function(Value)
+
+				if Value == nil then
+
+					return
+
+				end
+
+				local args = {
+					[1] = Value,
+					[2] = workspace.NPCs:FindFirstChild(Value)
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.TakeQuest:FireServer(unpack(args))
+
+				questToAccept = Value
+
+			end)
+
+			local Toggle = Section:CreateToggle('Auto Accept Quest', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				autoChooseQuest = Value
+			end)
+
+			for _, v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+
+				if not table.find(tablquest, v.Name) and not game.Players:FindFirstChild(v.Name) and v:FindFirstChild("Dialogue") then
+
+					for _, e in pairs(v.Dialogue:GetDescendants()) do
+
+						if e.Name == "Quest" then
+
+							if not table.find(tablquest, v.Name) then
+
+								table.insert(tablquest, e.Value)
+
+							end
+						end
+
+					end
+				end
+
+			end
+
+			quests:UpdateDropdown(tablquest)
+
+		end
+
+		local KillinMethod = Section:CreateDropdown('Killing Method', {"Above", "Behind", "Under"}, "Behind", 0, function(Value)
+
+			method = Value
+			Settings.Method = method
+			Save()
+
+		end)
+
+
+		UIS.InputBegan:Connect(function(key, typing)
+			if key.KeyCode == Enum.KeyCode.W then
+				if Settings.AutoRun and isPremium then
+					if isHoldingW == false then
+						isHoldingW = true
+						vm:SendKeyEvent(true, "W", false, game)
+					end
+				end
+			end
+		end)
+
+		UIS.InputEnded:Connect(function(key, typing)
+			if key.KeyCode == Enum.KeyCode.W then
+				if Settings.AutoRun and isPremium then
+					if isHoldingW == true then
+						isHoldingW = false
+						vm:SendKeyEvent(false, "W", false, game)
+					end
+				end
+			end
+		end)
+
+		game:GetService("RunService").Heartbeat:Connect(function()
+
+			if Speed > 0 then
+
+				if player.Character then
+
+					player.Character.Humanoid.WalkSpeed = Speed
+
+				end
+
+			end
+
+			local succ, err = pcall(function()
+
+				local character = player.Character or player.CharacterAdded:Wait()
+				local root = character.HumanoidRootPart
+				local hum = character.Humanoid
+
+				if questToAccept and isPremium then
+
+					if autoChooseQuest == false then
+
+						questToAccept = nil
+
+					end
+
+					local args = {
+						[1] = questToAccept,
+						[2] = workspace.NPCs:FindFirstChild(questToAccept)
+					}
+
+					game:GetService("ReplicatedStorage").Remotes.TakeQuest:FireServer(unpack(args))
+
+				end
+
+				for _, v in pairs(player.PlayerGui.Hotbar.Frame:GetChildren()) do
+
+					local nam = v.Name
+
+					if table.find(skillsTable, nam) then
+
+						local skill = v
+
+						if not skill:FindFirstChild("Cooldown") then
+
+							firesignal(skill.Activated)
+
+							local args = {
+								[1] = {
+									["inputType"] = Enum.UserInputType.MouseButton1,
+									["keyCode"] = Enum.KeyCode.Unknown
+								}
+							}
+
+							game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(args))
+
+							firesignal(skill.Activated)
+
+						end
+					end
+				end
+
+				if choosingWeapon == true then
+
+					choosingWeapon = false
+					foundWeapon = nil
+
+					task.wait(0.5)
+
+					for _, v in pairs(character:GetChildren()) do
+
+						if not table.find(nonWeapon, v.Name) then
+
+							table.insert(nonWeapon, v.Name)
+
+							foundWeapon = v.Name
+
+						end
+					end
+
+					task.wait(0.5)
+
+					Library:CreatePrompt('TwoButton', 'Is this your weapon?', foundWeapon, {
+						'No',
+						function()
+							choosingWeapon = true
+						end,
+						'Yes',
+						function()
+							choosenWeapon = foundWeapon
+						end
+
+					})
+
+
+				end
+
+				if resetAfterMode and isPremium then
+
+					if player:FindFirstChild("CoolDowns") then
+
+						if player.Cooldowns:FindFirstChild("Transform") then
+
+							character.Humanoid.Health = 0
+
+						end
+
+					end
+
+				end
+
+				if lowHp and string.len(mode) > 2 and isPremium then
+					if character.Humanoid.Health <= lowHp then
+
+						game.Players:Chat(mode)
+
+					end
+
+				end	
+
+				if hitCount < 4 then
+
+					if autoFarm and choosenMob and player.Character then
+
+						local mob = game.Workspace.Living:FindFirstChild(choosenMob)
+
+						if currentNpc == nil or currentNpc:FindFirstChild("Humanoid") and currentNpc.Humanoid.Health > 0 then				
+							currentNpc = mob
+						else
+							currentNpc = nil
+						end
+
+						if currentNpc then
+
+							if currentNpc.Humanoid.Health > 0 then
+
+								if resetIfLowReiatsu and player.Status.Reiatsu.Value <= 25 then
+
+									hum.Health = 0
+
+								end
+
+								if method == "Above" then
+									root.CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, distance, 0)
+									root.CFrame = CFrame.new(root.Position, currentNpc.HumanoidRootPart.Position)
+								elseif method == "Behind" then
+									root.CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, 0, distance)
+								elseif method == "Under" then
+									root.CFrame = currentNpc.HumanoidRootPart.CFrame * CFrame.new(0, -distance, 0)
+									root.CFrame = CFrame.new(root.Position, currentNpc.HumanoidRootPart.Position)
+								end	
+
+								if not game.Players:FindFirstChild(mob.Name) then
+
+									if currentNpc.Status.Blocking.Value == false then
+
+										local args = {
+											[1] = {
+												["inputType"] = Enum.UserInputType.MouseButton1,
+												["keyCode"] = Enum.KeyCode.Unknown
+											}
+										}
+
+										game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(args))
+
+									else
+
+										hitCount = -3
+
+										local args = {
+											[1] = {
+												["inputType"] = Enum.UserInputType.MouseButton2,
+												["keyCode"] = Enum.KeyCode.Unknown
+											}
+										}
+
+										game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(args))
+
+									end
+
+								else
+
+									if game.Players:FindFirstChild(currentNpc.Name).Status.Blocking.Value == false then
+
+										local args = {
+											[1] = {
+												["inputType"] = Enum.UserInputType.MouseButton1,
+												["keyCode"] = Enum.KeyCode.Unknown
+											}
+										}
+
+										game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(args))
+
+									else
+
+										hitCount = -3
+
+										local args = {
+											[1] = {
+												["inputType"] = Enum.UserInputType.MouseButton2,
+												["keyCode"] = Enum.KeyCode.Unknown
+											}
+										}
+
+										game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(args))
+
+									end
+
+								end		
+
+							else
+
+								mob:Destroy()
+
+							end
+						end
+					end
+
+					if autoQuest == true then
+
+						local quest = player.Data.Quests
+						local str = string.split(quest.Value, "Kill ", " ")
+
+						if string.match(quest.Value, "Hollow Slayer") then
+
+							local killsLeft = string.sub(quest.Value, 26, 26)
+
+							if killsLeft <= 0 then
+
+								choosenMob = ""
+								autoFarm = false
+								autoQuest = false
+
+							end
+
+						end
+					end
+
+				end
+			end)
+
+			if err then
+
+				print(err)
+
+			end
+
+		end)
+
+		coroutine.wrap(function()
+
+			while task.wait(0.3) do
+
+				local succ, err = pcall(function()
+
+			--[[if autoSecondary then
+
+				local args = {
+					[1] = "Roll Secondary"
+				}
+
+				game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(unpack(args))
+
+				local text = game.Players.LocalPlayer.PlayerGui.ConfirmRaceChange.Frame.Title.Text
+				local yes = game.Players.LocalPlayer.PlayerGui.ConfirmRaceChange.Frame.Yes
+				local no = game.Players.LocalPlayer.PlayerGui.ConfirmRaceChange.Frame.No
+				local newText = string.gsub(text, "You just rolled ", "")
+				newText = string.gsub(newText, ". Do you accept it?", "")
+				newText = string.gsub(newText, "?", "")
+				local Found = table.find(choosenSecondaries, newText)
+				
+				task.wait(1)
+				
+				autoSecondary = false
+				
+				if Found then
+
+					autoSecondary = false
+					
+					-- Script generated by SimpleSpy - credits to exx#9394
+
+					local args = {
+						[1] = "Yes"
+					}
+
+					game:GetService("ReplicatedStorage").Remotes.ConfirmRaceChange:FireServer(unpack(args))
+
+
+				else
+
+					-- Script generated by SimpleSpy - credits to exx#9394
+
+					local args = {
+						[1] = "No"
+					}
+
+					game:GetService("ReplicatedStorage").Remotes.ConfirmRaceChange:FireServer(unpack(args))
+					
+					
+					task.wait(0.5)
+					
+					autoSecondary = true
+
+				end
+
+			end--]]
+
+					if hitCount >= 4 then
+
+						player.Character.HumanoidRootPart.CFrame = CFrame.new(math.random(1000, 10000), math.random(1000, 10000), math.random(1000, 10000))
+
+						task.wait(1)
+
+						hitCount = 0
+
+					end
+
+					if autoFarm or autoQuest then
+
+						if isPremium == true and SafeFarm == true then
+
+							hitCount += 1
+
+						end
+					end
+
+				end)
+			end
+
+		end)()
+
+		coroutine.wrap(function()
+
+			while task.wait(1) do
+
+				local succ, err = pcall(function()
+
+					if autoSecondary then
+
+						local args = {
+							[1] = "Roll Secondary"
+						}
+
+						game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(unpack(args))
+
+						task.wait(1)
+
+						for _, v in pairs(choosenSecondaries) do
+
+							local text = game.Players.LocalPlayer.PlayerGui.ConfirmRaceChange.Frame.Title.Text
+							local yes = game.Players.LocalPlayer.PlayerGui.ConfirmRaceChange.Frame.Yes
+							local no = game.Players.LocalPlayer.PlayerGui.ConfirmRaceChange.Frame.No
+							local newText = string.gsub(text, "You just rolled ", "")
+							newText = string.gsub(newText, ". Do you accept it?", "")
+							newText = string.gsub(newText, "?", "")
+
+							if v == newText then
+
+								autoSecondary = false
+
+								local args = {
+									[1] = "Yes"
+								}
+
+								game:GetService("ReplicatedStorage").Remotes.ConfirmRaceChange:FireServer(unpack(args))
+
+							end
+						end
+
+						task.wait(1)
+
+						if autoSecondary == true then
+
+							for i,v in pairs(getconnections(no.Activated)) do
+								v:Fire()
+							end
+						end
+
+					end
+
+					if choosenWeapon and justSpawned == false then
+
+						if not character:FindFirstChild(choosenWeapon) then
+
+							print(choosenWeapon)
+
+							if autoEquip == true then
+
+								local args = {
+									[1] = {
+										["inputType"] = Enum.UserInputType.Keyboard,
+										["keyCode"] = Enum.KeyCode.E
+									}
+								}
+
+								game:GetService("ReplicatedStorage").Remotes.Input:FireServer(unpack(args))
+
+							end
+						end
+					end
+
+				end)
+			end
+
+		end)()
+
+		player.CharacterAdded:Connect(function(Char)
+
+			character = Char
+			justSpawned = true
+
+			task.wait(3)
+
+			justSpawned = false
+
+		end)
+
+		local isTeleporting = false
+
+		local dropdown = nil
+		local dropdown2 = nil
+		local webhook = nil
+		local timer = nil
+		local dropdown3 = nil
+		local timeToNotify = ""
+		local nextTimeNotifyAt = nil
+
+		if Settings.WebHook ~= nil then
+
+			webhook = Settings.WebHook
+
+		end
+
+		function Webhook(message, title)
+
+			print(webhook)
+			if title == nil then
+
+				title = "Azure Hub Bot"
+
+			end
+
+			local url = webhook
+			local data = {
+				["content"] = "",
+				["embeds"] = {
+					{
+						["title"] = title,
+						["description"] = message,
+						["type"] = "rich",
+						["color"] = tonumber(0x7269da),
+						["image"] = {
+							["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+								tostring(game:GetService("Players").LocalPlayer.Name)
+						}
+					}
+				}
+			}
+			local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+			local headers = {
+				["content-type"] = "application/json"
+			}
+			request = http_request or request or HttpPost or syn.request
+			local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+			request(abcdef)
+
+		end
+
+		if isPremium == true then
+
+			local Toggle = Section:CreateToggle('Auto Mob', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				autoFarm = Value
+			end)
+
+			local Toggle = Section:CreateToggle('Safe Farm', Settings.SafeFarm, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				SafeFarm = Value
+				Settings.SafeFarm = SafeFarm
+				Save()
+			end)
+
+			aQuest = Section:CreateToggle('Auto Quest', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				autoQuest = Value
+				autoFarm = Value
+			end)
+
+			local Toggle = Section:CreateToggle('Reiatsu Reset', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				resetIfLowReiatsu = Value
+			end)
+
+			local mobs = {}
+			local Dropdown = Section:CreateDropdown('Mobs', mobs, nil, 0, function(Value)
+				choosenMob = Value
+			end)
+
+			local Slider = Section:CreateSlider('Distance', 1, 15, Settings.Distance, Color3.fromRGB(0, 125, 255), function(Value)
+				distance = Value
+				Settings.Distance = distance
+				Save()
+			end)
+
+			local Toggle = Section:CreateToggle('Safe Place', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				if Value == true then
+
+					local part = Instance.new("Part", game.Workspace)
+					part.Name = "SafePart"
+					part.Anchored = true
+					part.Position = Vector3.new(math.random(10000, 20000), 80000, math.random(10000, 100000))
+					oldPos = player.Character.HumanoidRootPart.CFrame
+					player.Character.HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 10, 0)
+					if safePartSize == nil then
+
+						part.Size = Vector3.new(500, 25, 500)
+
+					else
+
+						part.Size = Vector3.new(safePartSize, 10 + (safePartSize * 0.05) , safePartSize)
+
+					end
+
+				elseif Value == false and game.Workspace:FindFirstChild("SafePart") then
+
+					game.Workspace.SafePart:Destroy()
+					player.Character.HumanoidRootPart.CFrame = oldPos
+
+
+				end
+			end)
+
+			local autoLv050 = Section:CreateToggle('Auto Level 50', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+				Settings.Auto50 = true
+				Save()
+				game:GetService("TeleportService"):Teleport(8934886191, player)
+			end)
+
+			for _, v in pairs(game.Workspace.Living:GetChildren()) do
+
+				if not table.find(mobs, v.Name) and not game.Players:FindFirstChild(v.Name) then
+
+					table.insert(mobs, v.Name)
+
+				end
+
+			end
+
+			Dropdown:UpdateDropdown(mobs)
+
+			local update = Section:CreateButton('Update Mobs', function()
+				for _, v in pairs(game.Workspace.Living:GetChildren()) do
+
+					if not table.find(mobs, v.Name) and not game.Players:FindFirstChild(v.Name) then
+
+						table.insert(mobs, v.Name)
+
+					end
+
+				end
+
+				Dropdown:UpdateDropdown(mobs)
+
+			end)
+
+			local Misc = Window:CreateTab('Misc', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+			local MiscTab = Misc:CreateSection('Section')
+
+			local Slider10000 = MiscTab:CreateSlider('WalkSpeed', 0, 200, 0, Color3.fromRGB(0, 125, 255), function(Value)
+				Speed = Value
+				Settings.Speed = Speed
+				Save()
+			end)
+
+			local ARun = MiscTab:CreateToggle('Auto Run', Settings.AutoRun, Color3.fromRGB(0, 125, 255), 0.1, function(Value)
+				Settings.AutoRun = Value
+				Save()
+			end)
+
+
+			local PaidTab = Window:CreateTab('Paid', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+			local Section2 = PaidTab:CreateSection('Section')
+
+			local tablnpc = {}
+
+			for _, v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+
+				if not table.find(tablnpc, v.Name) and not game.Players:FindFirstChild(v.Name) then
+
+					table.insert(tablnpc, v.Name)
+
+				end
+			end
+
+			local choosenNpc = nil
+			local npc = Section2:CreateDropdown('Npcs', tablnpc, nil, 0, function(Value)
+
+				if Value == nil then
+
+					return
+
+				end
+
+				choosenNpc = Value
+
+			end)
+
+			local tptonpc = Section2:CreateButton('Tp To', function()
+
+				local root = player.Character.HumanoidRootPart
+
+				root.CFrame = game.Workspace.NPCs:FindFirstChild(choosenNpc).HumanoidRootPart.CFrame
+
+			end)
+
+			for _, v in pairs(game:GetService("Workspace").NPCs:GetChildren()) do
+
+				if not table.find(tablnpc, v.Name) and not game.Players:FindFirstChild(v.Name) then
+
+					table.insert(tablnpc, v.Name)
+
+				end
+
+			end
+
+			local tpSoulSociety = Section2:CreateButton('Soul Society', function()
+
+				game:GetService("TeleportService"):Teleport(8934886191, player)
+
+			end)
+
+			local tpHueco = Section2:CreateButton('Hueco Mundo', function()
+
+				game:GetService("TeleportService"):Teleport(12634378292 , player)
+
+			end)
+
+			local tpHell = Section2:CreateButton('Hell', function()
+
+				game:GetService("TeleportService"):Teleport(12634382039 , player)
+
+			end)
+
+
+			local Input = Section2:CreateTextbox('Webhook (Only With Webhook Type)', '...', function(Value)
+				Library:CreatePrompt('OneButton', 'Azure Hub', 'Sent Test Webhook', {
+					'Alright',
+					function()
+
+					end
+				})
+				webhook = Value
+				Settings.WebHook = Value
+				Save()
+				Webhook("Testing Webhook", nil)
+
+			end)
+
+			local Input = Section2:CreateTextbox('Mode Name', Settings.Mode, function(Value)
+
+				mode = Value
+				Settings.Mode = mode
+				Save()
+
+			end)
+
+			local Slider99 = Section2:CreateSlider('Hp For Mode', 1, player.Character.Humanoid.MaxHealth, lowHp, Color3.fromRGB(0, 125, 255), function(Value)
+				lowHp = Value
+				Settings.LowHp = lowHp
+				Save()
+			end)
+
+			local Toggle = Section2:CreateToggle('Reset After Mode', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+
+				resetAfterMode = Value
+
+			end)
+
+			local Dropdown = Section2:CreateDropdown('Admin Detect', {'Nothing', 'Kick', 'Notify', 'Rejoin'}, 'Kick', 0.25, function(Value)
+				dropdown2 = Value
+				checkAdmin()
+			end)
+
+			local Label
+
+			local Dropdown5 = Section2:CreateDropdown('Auto Skill', {"1", "2", "3", "4", "5", "6", "7", "R", "T", "Y"}, nil, 0.25, function(Value)
+
+				if not table.find(skillsTable, Value) then
+
+					table.insert(skillsTable, Value)
+
+				else
+
+					table.remove(skillsTable, table.find(skillsTable, Value))
+
+				end
+
+				Label:UpdateLabel(table.concat(skillsTable, ", "))
+
+			end)
+
+			Label = Section2:CreateLabel(table.concat(skillsTable, ", "))
+
+			local killPlayerV = false
+			local firstTimeKillPlayer = false
+			local playerToKill = nil
+
+			local tpPlayer = Section2:CreateButton('Teleport To', function()
+
+				if playerToKill ~= nil and game.Players:FindFirstChild(playerToKill) then
+
+					player.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(playerToKill).Character.HumanoidRootPart.CFrame
+
+				else
+
+
+					Library:CreatePrompt('OneButton', 'Azure Hub', 'Player Does Not Exist', {
+						'Alright',
+						function()
+
+						end
+					})
+
+				end
+			end)
+
+			local Toggle = Section2:CreateToggle('Spectate', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+
+				if playerToKill ~= nil or game.Players:FindFirstChild(playerToKill) then
+
+					if Value == true then
+
+						game.Workspace.Camera.CameraSubject = game.Players:FindFirstChild(playerToKill).Character.Humanoid
+
+					else
+
+						game.Workspace.Camera.CameraSubject = player.Character.Humanoid
+
+					end
+
+				else
+
+					Library:CreatePrompt('OneButton', 'Azure Hub', 'Player Does Not Exist', {
+						'Alright',
+						function()
+
+						end
+					})
+
+				end
+			end)
+
+			local Toggle = Section2:CreateToggle('Farm Player', false, Color3.fromRGB(0, 125, 255), 0.25, function(Value)
+
+				if playerToKill ~= nil or game.Players:FindFirstChild(playerToKill) then
+
+					if Value == true then
+
+						autoFarm = true
+						choosenMob = playerToKill
+
+					else
+
+						autoFarm = false
+						choosenMob = nil
+
+					end
+
+				else
+
+					Library:CreatePrompt('OneButton', 'Azure Hub', 'Player Does Not Exist', {
+						'Alright',
+						function()
+
+						end
+					})
+
+				end
+			end)
+
+			local Slider2 = Section2:CreateSlider('Distance', 1, 15, 5, Color3.fromRGB(0, 125, 255), function(Value)
+				distance = Value
+			end)
+
+			local playerstable = {}
+
+			local ddi = Section2:CreateDropdown('Players', playerstable, nil, 0.1, function(Value)
+				playerToKill = Value
+			end)
+
+			for _, v in pairs(game.Players:GetChildren()) do
+
+				table.insert(playerstable, v.Name)
+				checkAdmin()
+
+			end
+
+			ddi:UpdateDropdown(playerstable)
+
+			players.PlayerAdded:Connect(function(plr)
+
+				for _, v in pairs(game.Players:GetChildren()) do
+
+					table.insert(playerstable, v.Name)
+
+				end
+
+				checkAdmin()
+
+				ddi:UpdateDropdown(playerstable)
+
+			end)
+
+			players.PlayerRemoving:Connect(function(plr)
+
+				for _, v in pairs(game.Players:GetChildren()) do
+
+					table.remove(playerstable, table.find(playerstable, v.Name))
+
+				end
+
+				checkAdmin()
+
+				ddi:UpdateDropdown(playerstable)
+
+			end)
+
+		end
+
+		local PaidAutoRoll = Window:CreateTab('Shop', false, 'rbxassetid://3926305904', Vector2.new(524, 44), Vector2.new(36, 36))
+
+		local PaidAutoRollTab = PaidAutoRoll:CreateSection('Section')
+
+		local RollSecondary = PaidAutoRollTab:CreateButton('Roll Secondary', function()
+
+			local args = {
+				[1] = "Roll Secondary"
+			}
+
+			game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(unpack(args))
+
+		end)
+
+		local RollRace = PaidAutoRollTab:CreateButton('Roll Race', function()
+
+			local args = {
+				[1] = "Race Roll"
+			}
+
+			game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(unpack(args))
+
+		end)
+
+		if isPremium == false then
+			local Premium = PaidAutoRollTab:CreateButton('Buy Premium', function()
+
+
+				setclipboard([[_G.DiscordUser = "DiscordHere"
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/SharkUploads/Whitelister/main/GamepassWhitelister')))()]])
+
+				Library:CreatePrompt('TwoButton', 'Buy Premium', 'Are you sure you want to be teleported to "Buy Premium" Place?', {
+					'Yes',
+					function()
+
+						setclipboard([[_G.DiscordUser = "DiscordHere"
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/SharkUploads/Whitelister/main/GamepassWhitelister')))()]])
+
+						Library:CreatePrompt('TwoButton', 'Buy Premium', 'Execute the copied script in the new place', {
+							'Yes',
+							function()
+								game:GetService("TeleportService"):Teleport(7216962919, player)
+							end,
+							'No',
+							function()
+								return
+							end
+						})
+					end,
+					'No',
+					function()
+						return
+					end
+				})
+
+			end)
+		end	
+
+--[[local Label
+
+local Input = PaidAutoRollTab:CreateTextbox('Secondary Name', '...', function(Value)
+
+	if not table.find(choosenSecondaries, Value) then
+
+		table.insert(choosenSecondaries, Value)
+
+	else
+
+		table.remove(choosenSecondaries, table.find(choosenSecondaries, Value))
+
+	end
+
+	Label:UpdateLabel(table.concat(choosenSecondaries, ", "))
+
+end)
+
+Label = PaidAutoRollTab:CreateLabel(table.concat(choosenSecondaries, ", "))
+
+local ASecondary = PaidAutoRollTab:CreateToggle('Auto Secondary', false, Color3.fromRGB(0, 125, 255), 0.1, function(Value)
+	autoSecondary = Value
+end)
+--]]
+
+		local SettingsTab = Window:CreateTab('Settings', false, 'rbxassetid://3926305904', Vector2.new(484, 44), Vector2.new(36, 36))
+
+		local SectionSettings = SettingsTab:CreateSection('General')
+
+		local isClosed = false
+
+		local Keybind1 = SectionSettings:CreateKeybind('Key To Toggle UI', "LeftControl", function()
+			Library:ToggleUI()
+		end)
+
+		local Transparency = SectionSettings:CreateTextbox('Transparency (Restart)', Settings.BaseTransparency, function(Value)
+
+			Settings.BaseTransparency = Value
+
+			Save()
+
+			Library:SetTransparency(tonumber(Settings.BaseTransparency), false)
+
+		end)
+
+		Library:SetTransparency(tonumber(Settings.BaseTransparency), false)
+
+		local Tab3 = Window:CreateTab('Discord/Info', false, 'rbxassetid://3926305904', Vector2.new(484, 44), Vector2.new(36, 36))
+
+		local Section3 = Tab3:CreateSection('Infos')
+
+		local Button = Section3:CreateButton('Join Discord', function()
+			if syn then
+
+				syn.request(
+					{
+						Url = "http://127.0.0.1:6463/rpc?v=1",
+						Method = "POST",
+						Headers = {
+							["Content-Type"] = "application/json",
+							["origin"] = "https://discord.com",
+						},
+						Body = game:GetService("HttpService"):JSONEncode(
+						{
+							["args"] = {
+								["code"] = "KvM87FJHEj",
+							},
+							["cmd"] = "INVITE_BROWSER",
+							["nonce"] = "."
+						})
+					})
+
+			else
+
+				setclipboard(tostring("https://discord.gg/KvM87FJHEj"))  
+
+				Library:CreatePrompt('TwoButton', 'Azure Hub', 'Copied Link', {
+					'Alright',
+					'Fuck Off',
+					function()
+
+					end
+				})
+			end
+
+		end)
+
+		local Paragraph = Section3:CreateParagraph('Creators', 'Made by Skrillex#6300 and Anima#1906')
+
+		task.wait(5)
+
+		if Settings.Auto50 == true then
+
+			Settings.Auto50 = false
+
+			Save()
+
+			task.wait(2)
+
+			local character = player.Character or player.CharacterAdded:Wait()
+			local root = character:WaitForChild("HumanoidRootPart")
+
+			local args = {
+				[1] = "The Lost Dog"
+			}
+
+			game:GetService("ReplicatedStorage").Remotes.TakeQuest:FireServer(unpack(args))
+
+			task.wait(2)
+
+			local dog = game:GetService("Workspace").SpawnedNPCs["The Dog"]
+
+			repeat
+
+				dog = game:GetService("Workspace").SpawnedNPCs["The Dog"]
+				task.wait()
+
+			until dog.Player.Value == player.Name
+
+			root.CFrame = dog.HumanoidRootPart.CFrame
+			task.wait(0.5)
+			fireproximityprompt(dog.ProximityPrompt, 99999)
+
+			root.CFrame = game:GetService("Workspace").NPCs.XenonBlxde.HumanoidRootPart.CFrame
+
+			task.wait(2)
+
+			local args = {
+				[1] = "The Pond Visit"
+			}
+
+			game:GetService("ReplicatedStorage").Remotes.TakeQuest:FireServer(unpack(args))
+
+			root.CFrame = CFrame.new(1186.91113, 18.7000008, 48.9161949, -0.130255789, -4.39744738e-08, -0.99148041, 5.96333152e-08, 1, -5.21866674e-08, 0.99148041, -6.59228832e-08, -0.130255789)
+
+			task.wait(2)
+
+			local args = {
+				[1] = "Pouch Delivery"
+			}
+
+			game:GetService("ReplicatedStorage").Remotes.TakeQuest:FireServer(unpack(args))
+
+			task.wait(0.5)
+
+			fireclickdetector(game:GetService("Workspace").NPCs.DonFlacko.ClickDetector)
+
+		end
+
+	elseif game.GameId == 114967577 then -- Dragon Ball Z Final Remastered
+
+
+		local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+		local Window = nil
+		local player = game.Players.LocalPlayer
+		local adminIds = {85430711, 267468570, 70433390, 75027435, 69246543, 72978317, 375454798, 34309522, 31856449}
+		local synapse = false
+
+		local Name = "AzureHubDBZFR.JSON"
+
+		local DefaultSettings = {
+			AutoDragonBall = false,
+			autoDragonBallsServerHop = false,
+			WebHook = nil
+		}
+
+		local Settings
+
+		if not pcall(function() readfile(Name) end) then writefile(Name, game:service'HttpService':JSONEncode(DefaultSettings)) end
+
+		Settings = game:service'HttpService':JSONDecode(readfile(Name))
+
+		local function Save()
+			writefile(Name,game:service'HttpService':JSONEncode(Settings))
+		end
+
+		function checkAdmin(plr)
+
+			if table.find(adminIds, plr.UserId) then
+
+				return true
+
+			else
+
+				return false
+
+			end
+
+		end
+
+		if isPremium == true then
+
+			Window = OrionLib:MakeWindow({Name = "Azure Hub Pro - Dragon Ball Final Remastered", HidePremium = false, SaveConfig = true, ConfigFolder = "AzureHub", IntroText = "Azure Hub Pro"})
+			isPremium = true
+
+		else
+
+			Window = OrionLib:MakeWindow({Name = "Azure Hub - Dragon Ball Final Remastered", HidePremium = true, SaveConfig = true, ConfigFolder = "AzureHub", IntroText = "Azure Hub"})
+
+		end
+
+		local players = game.Players
+
+		local PlaceID = game.PlaceId
+		local AllIDs = {}
+		local foundAnything = ""
+		local actualHour = os.date("!*t").hour
+		local Deleted = false
+		local File = pcall(function()
+			AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+		end)
+		if not File then
+			table.insert(AllIDs, actualHour)
+			writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+		end
+		function TPReturner()
+			local Site;
+			if foundAnything == "" then
+				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+			else
+				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+			end
+			local ID = ""
+			if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+				foundAnything = Site.nextPageCursor
+			end
+			local num = 0;
+			for i,v in pairs(Site.data) do
+				local Possible = true
+				ID = tostring(v.id)
+				if tonumber(v.maxPlayers) > tonumber(v.playing) then
+					for _,Existing in pairs(AllIDs) do
+						if num ~= 0 then
+							if ID == tostring(Existing) then
+								Possible = false
+							end
+						else
+							if tonumber(actualHour) ~= tonumber(Existing) then
+								local delFile = pcall(function()
+									delfile("NotSameServers.json")
+									AllIDs = {}
+									table.insert(AllIDs, actualHour)
+								end)
+							end
+						end
+						num = num + 1
+					end
+					if Possible == true then
+						table.insert(AllIDs, ID)
+						wait()
+						pcall(function()
+							writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+							wait()
+							game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+						end)
+						wait(4)
+					end
+				end
+			end
+		end
+
+		function Teleport()
+			while wait() do
+				pcall(function()
+					TPReturner()
+					if foundAnything ~= "" then
+						TPReturner()
+					end
+				end)
+			end
+		end
+
+
+		local vim = game:GetService("VirtualInputManager")
+		local player = game.Players.LocalPlayer
+		local hum = player.Character:WaitForChild("Humanoid")
+		local healing = false
+		local data = player:WaitForChild("Data")
+		local power = data.Power
+
+		local autKey = false
+		local autMediate
+
+		local TweenService = game:GetService("TweenService")
+
+		local camera = workspace.CurrentCamera
+		local tweenInfo = TweenInfo.new(
+			0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out
+		)
+
+
+		local UIS = game:GetService("UserInputService")
+
+		if Settings.WebHook ~= nil then
+
+			OrionLib:MakeNotification({
+				Name = "Azure Hub",
+				Content = "Current Webhook: " .. Settings.WebHook,
+				Image = "rbxassetid://4483345998",
+				Time = 5
+			})
+
+		end
+
+		local Tab = Window:MakeTab({
+			Name = "Auto Farm",
+			Icon = "rbxassetid://4483345998",
+			PremiumOnly = false
+		})
+
+		local Section = Tab:AddSection({
+			Name = "Stats"
+		})
+
+		local ShadowTrainFarm = false
+		local ShadowTrainWait = 0
+		local autoDragonBallsServerHop = false
+		if isPremium == false then
+
+			local PLFarm = Tab:AddToggle({
+				Name = "PL Farm (High ban chance)",
+				Default = false,
+				Callback = function(Value)
+					local Pos1 = player.Character.HumanoidRootPart.Position.Y
+					if Pos1 >= 70000 then
+
+						ShadowTrainFarm = Value
+
+					else
+
+						if Value == true then
+wait(0.1)
+							
+
+						end   
+					end
+				end    
+			})
+
+			Tab:AddSlider({
+				Name = "Fast PL Settings",
+				Min = 0.15,
+				Max = 1,
+				Default = 0,
+				Color = Color3.fromRGB(255,255,255),
+				Increment = 0.01,
+				ValueName = "Seconds Between Hits",
+				Callback = function(Value)
+					ShadowTrainWait = Value
+				end    
+			})
+
+
+		end
+
+		Tab:AddToggle({
+			Name = "Auto Meditation (Put the manual one)",
+			Default = false,
+			Callback = function(Value)
+				autMediate = Value
+			end    
+		})
+
+		Tab:AddToggle({
+			Name = "Auto Gravity Chamber",
+			Default = false,
+			Callback = function(Value)
+				autKey = Value
+			end    
+		})
+
+		local KillAuraWait = 0
+		local maxDistance = 15
+		local KillAura = false
+		local firstTimeKillAura = false
+		local killauraToggle = Tab:AddToggle({
+			Name = "Kill Aura (Low Chance Of Kick)",
+			Default = false,
+			Callback = function(Value)
+				KillAura = Value
+
+				if firstTimeKillAura == false and Value == true then
+					firstTimeKillAura = true
+					OrionLib:MakeNotification({
+						Name = "Azure Hub",
+						Content = "There is a little chance of you getting kicked",
+						Image = "rbxassetid://4483345998",
+						Time = 5
+					})
+
+				end
+			end    
+		})
+
+		Tab:AddSlider({
+			Name = "Kill Aura Speed",
+			Min = 0.05,
+			Max = 1,
+			Default = 0,
+			Color = Color3.fromRGB(255,255,255),
+			Increment = 0.01,
+			ValueName = "Seconds",
+			Callback = function(Value)
+				KillAuraWait = Value
+			end    
+		})
+
+		Tab:AddSlider({
+			Name = "Kill Aura Distance",
+			Min = 5,
+			Max = 15,
+			Default = 10,
+			Color = Color3.fromRGB(255,255,255),
+			Increment = 1,
+			ValueName = "Meters",
+			Callback = function(Value)
+				maxDistance = Value
+			end    
+		})
+
+		local keyPressSpeed = 0
+		Tab:AddSlider({
+			Name = "Auto Gravity Chamber Speed",
+			Min = 0,
+			Max = 1,
+			Default = 0.1,
+			Color = Color3.fromRGB(255,255,255),
+			Increment = 0.01,
+			ValueName = "Seconds",
+			Callback = function(Value)
+				keyPressSpeed = Value
+			end    
+		})
+
+		local Tab = Window:MakeTab({
+			Name = "Misc",
+			Icon = "rbxassetid://4483345998",
+			PremiumOnly = false
+		})
+
+		local oldPos = nil
+		local safePartSize = nil
+		Tab:AddToggle({
+			Name = "Safe Place",
+			Default = false,
+			Callback = function(Value)
+				if Value == true then
+
+					local part = Instance.new("Part", game.Workspace)
+					part.Name = "SafePart"
+					part.Anchored = true
+					part.Position = Vector3.new(math.random(10000, 20000), 80000, math.random(10000, 100000))
+					oldPos = player.Character.HumanoidRootPart.CFrame
+					player.Character.HumanoidRootPart.CFrame = part.CFrame * CFrame.new(0, 10, 0)
+					if safePartSize == nil then
+
+						part.Size = Vector3.new(500, 25, 500)
+
+					else
+
+						part.Size = Vector3.new(safePartSize, 10 + (safePartSize * 0.05) , safePartSize)
+
+					end
+
+				elseif Value == false and game.Workspace:FindFirstChild("SafePart") then
+
+					game.Workspace.SafePart:Destroy()
+					player.Character.HumanoidRootPart.CFrame = oldPos
+
+
+				end
+			end    
+		})
+
+		local InfStam = false
+		Tab:AddToggle({
+			Name = "Infinite Stamina",
+			Default = false,
+			Callback = function(Value)
+				InfStam = Value
+			end    
+		})
+
+		local InfKi = false
+		Tab:AddToggle({
+			Name = "Infinite Ki",
+			Default = false,
+			Callback = function(Value)
+				InfKi = Value
+			end    
+		})
+
+		local FastPunch = true
+		local PunchingSpeed = 0
+		Tab:AddToggle({
+			Name = "Fast Punch",
+			Default = false,
+			Callback = function(Value)
+				PunchingSpeed = Value
+
+				if Value == false then
+
+					player.Data.CombatSpeed.Value = 0
+
+				end
+			end    
+		})
+
+		Tab:AddSlider({
+			Name = "Fast Punch Settings",
+			Min = 0,
+			Max = 100,
+			Default = 0,
+			Color = Color3.fromRGB(255,255,255),
+			Increment = 1,
+			ValueName = "Speed",
+			Callback = function(Value)
+				PunchingSpeed = Value
+			end    
+		})
+
+		local EspActivated = false
+		local EspClicked = false
+		Tab:AddButton({
+			Name = "Esp (Fates Esp)",
+			Callback = function()
+				if EspActivated == false then
+					EspActivated = true
+					OrionLib:MakeNotification({
+						Name = "Azure Hub",
+						Content = "Fates Esp Open",
+						Image = "rbxassetid://4483345998",
+						Time = 5
+					})
+				end    
+				loadstring(game:HttpGet('https://raw.githubusercontent.com/fatesc/fates-esp/main/main.lua'))()
+
+			end    
+		})
+
+		local Tab = Window:MakeTab({
+			Name = "Teleports",
+			Icon = "rbxassetid://4483345998",
+			PremiumOnly = false
+		})
+
+		local Section = Tab:AddSection({
+			Name = "Npc"
+		})
+
+		for _, v in pairs(game.Workspace:GetDescendants()) do
+
+			if v:FindFirstChild("HumanoidRootPart") and not game.Players:FindFirstChild(v.Name) and not v:FindFirstChild("Humanoid") and v.Name ~= "Keyframe" then
+
+				Tab:AddButton({
+					Name = v.Name,
+					Callback = function()
+						player.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame
+					end    
+				})
+
+			end 
+
+		end
+
+		local isTeleporting = false
+
+		local Tab = Window:MakeTab({
+			Name = "Maps Teleport",
+			Icon = "rbxassetid://4483345998",
+			PremiumOnly = false
+		})
+
+		Tab:AddButton({
+			Name = "Earth",
+			Callback = function()
+				isTeleporting = true
+				task.wait(1)
+				game:GetService("TeleportService"):Teleport(298400657, player)
+			end    
+		})
+
+		Tab:AddButton({
+			Name = "Otherworld",
+			Callback = function()
+				isTeleporting = true
+				task.wait(1)
+				game:GetService("TeleportService"):Teleport(4263492467, player)
+			end    
+		})
+
+		Tab:AddButton({
+			Name = "Namek (3000+ Strength)",
+			Callback = function()
+				isTeleporting = true
+				task.wait(1)
+				game:GetService("TeleportService"):Teleport(4761949056, player)
+			end    
+		})
+
+		Tab:AddButton({
+			Name = "Gravity Chamber (2500+ Strength)",
+			Callback = function()
+				isTeleporting = true
+				task.wait(1)
+				game:GetService("TeleportService"):Teleport(5798060869, player)
+			end    
+		})
+
+		local strengthSelected = nil
+		local defenseSelected = nil
+		local dropdown = nil
+		local dropdown2 = nil
+		local webhook = nil
+		local playerToKill = nil
+		local autoDragonBalls = false
+		local PlayersKillAura = false	
+		local UltraShadowTrainFarm = false
+		local timer = nil
+		local dropdown3 = nil
+		local timeToNotify = ""
+		local nextTimeNotifyAt = nil
+
+		if Settings.WebHook ~= nil then
+
+			webhook = Settings.WebHook
+
+		end
+
+		function Webhook(message, title)
+
+			print(webhook)
+			if title == nil then
+
+				title = "Azure Hub Bot"
+
+			end
+
+			local url =
+				webhook
+			local data = {
+				["content"] = "",
+				["embeds"] = {
+					{
+						["title"] = title,
+						["description"] = message,
+						["type"] = "rich",
+						["color"] = tonumber(0x7269da),
+						["image"] = {
+							["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+								tostring(game:GetService("Players").LocalPlayer.Name)
+						}
+					}
+				}
+			}
+			local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+			local headers = {
+				["content-type"] = "application/json"
+			}
+			request = http_request or request or HttpPost or syn.request
+			local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+			request(abcdef)
+
+		end
+
+		if isPremium == true then
+
+			local Tab = Window:MakeTab({
+				Name = "Paid",
+				Icon = "rbxassetid://4483345998",
+				PremiumOnly = false
+			})
+
+			Tab:AddToggle({
+				Name = "Auto Dragon Balls",
+				Default = Settings.AutoDragonBall,
+				Callback = function(Value)
+					autoDragonBalls = Value
+					Settings.AutoDragonBall = Value
+					Save()
+				end    
+			})
+
+			Tab:AddButton({
+				Name = "Dragon Ball ServerHop",
+				Callback = function(Value)
+					if game:GetService("Workspace"):FindFirstChild("DragonBallLocatioionsa") and #game:GetService("Workspace"):FindFirstChild("DragonBallLocatioionsa"):GetChildren() >0 then
+
+						OrionLib:MakeNotification({
+							Name = "Azure Hub",
+							Content = "There is a dragon ball!",
+							Image = "rbxassetid://4483345998",
+							Time = 5
+						})
+
+					else		
+
+						isTeleporting = true
+						task.wait(1)						
+						Teleport()
+					end
+				end
+			})
+
+			Tab:AddDropdown({
+				Name = "Type",
+				Default = "",
+				Options = {"None", "Notify", "Webhook", "Kick"},
+				Callback = function(Value)
+					dropdown = Value
+				end    
+			})
+
+			Tab:AddTextbox({
+				Name = "Strength",
+				Default = power.Value + 0,
+				TextDisappear = false,
+				Callback = function(Value)
+					strengthSelected = tonumber(Value)
+				end	  
+			})
+
+			Tab:AddTextbox({
+				Name = "Webhook (Only With Webhook Type)",
+				Default = "",
+				TextDisappear = true,
+				Callback = function(Value)
+					webhook = Value
+					OrionLib:MakeNotification({
+						Name = "Azure Hub",
+						Content = "Sended Message To Test",
+						Image = "rbxassetid://4483345998",
+						Time = 5
+					})
+					Webhook("Testing Webhook", nil)
+					Settings.WebHook = Value
+					Save()
+				end	  
+			})
+			power.Changed:Connect(function()
+				if power.Value >= strengthSelected then
+
+					if dropdown == "Notify" then
+
+						local audio = Instance.new("Sound", game.Workspace)
+						audio.SoundId = "rbxassetid://835068435"
+						audio.Volume = 10
+						audio:Play()
+
+						OrionLib:MakeNotification({
+							Name = "Azure Hub",
+							Content = "You Reached " .. strengthSelected .. "+" .. " Strength",
+							Image = "rbxassetid://4483345998",
+							Time = 5
+						})
+
+					elseif dropdown == "Webhook" then
+
+						Webhook("You Reached " .. strengthSelected .. "+" .. " Strength", nil)
+
+					elseif dropdown == "Kick" then
+
+						player:Kick("You Reached " .. strengthSelected .. "+" .. " Strength")
+
+					end
+				end
+			end)
+
+			local Tab = Window:MakeTab({
+				Name = "Paid 2",
+				Icon = "rbxassetid://4483345998",
+				PremiumOnly = false
+			})
+
+			Tab:AddDropdown({
+				Name = "Admin Detect",
+				Default = "Kick",
+				Options = {"None", "Kick", "Notify", "Webhook"},
+				Callback = function(Value)
+					dropdown2 = Value
+				end    
+			})
+
+			Tab:AddTextbox({
+				Name = "Webhook (Only With Webhook Type)",
+				Default = "",
+				TextDisappear = true,
+				Callback = function(Value)
+					webhook = Value
+					OrionLib:MakeNotification({
+						Name = "Azure Hub",
+						Content = "Sended Message To Test",
+						Image = "rbxassetid://4483345998",
+						Time = 5
+					})
+					Webhook("Testing Webhook", nil)
+					Settings.WebHook = Value
+					Save()
+				end	  
+			})
+
+			local killPlayerV = false
+			local firstTimeKillPlayer = false
+
+			Tab:AddButton({
+				Name = "Teleport To Player",
+				Callback = function(Value)
+
+					if playerToKill ~= nil and game.Players:FindFirstChild(playerToKill) then
+
+						player.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(playerToKill).Character.HumanoidRootPart.CFrame
+
+					else
+
+						OrionLib:MakeNotification({
+							Name = "Azure Hub",
+							Content = "Player: " .. "[" .. playerToKill .. "]" .. " Not Found",
+							Image = "rbxassetid://4483345998",
+							Time = 5
+						})
+
+					end
+
+				end    
+			})
+
+			Tab:AddToggle({
+				Name = "Spectate Player",
+				Default = false,
+				Callback = function(Value)
+
+					local succ, err = pcall(function()
+						if playerToKill ~= nil or game.Players:FindFirstChild(playerToKill) then
+
+							if Value == true then
+
+								game.Workspace.Camera.CameraSubject = game.Players:FindFirstChild(playerToKill).Character.Humanoid
+
+							else
+
+								game.Workspace.Camera.CameraSubject = player.Character.Humanoid
+
+							end
+
+						else
+
+							OrionLib:MakeNotification({
+								Name = "Azure Hub",
+								Content = "Player: " .. "[" .. playerToKill .. "]" .. " Not Found",
+								Image = "rbxassetid://4483345998",
+								Time = 5
+							})
+
+						end
+					end)
+				end    
+			})
+
+
+			local killPlayer = Tab:AddToggle({
+				Name = "Kill Player",
+				Default = false,
+				Callback = function(Value)
+					killPlayerV = Value
+
+					if firstTimeKillPlayer == false and Value == true then
+						firstTimeKillPlayer = true
+
+						OrionLib:MakeNotification({
+							Name = "Azure Hub",
+							Content = "High ban chance",
+							Image = "rbxassetid://4483345998",
+							Time = 5
+						})
+
+					end
+				end    
+			})
+
+			local dd= Tab:AddDropdown({
+				Name = "Players",
+				Default = "None",
+				Options = {"None"},
+				Callback = function(Value)
+					playerToKill = Value
+				end   
+			})
+
+			local succ, err = pcall(function()
+				local Skill = nil
+				Tab:AddDropdown({
+					Name = "Ki Skills",
+					Default = "None",
+					Options = {"Energy Wave", "Kamehameha", "Galick Gun", "Heat Dome Attack", "Masenko", "Death Beam", "Small Spirit Bomb", "Final Flash", "One Handed Kamehameha mk.2", "Super Black Kamehameha", "Angry Kamehameha", "Promenince Flash", "Kaioken Kamehameha", "Special Beam Cannon", "X10 Kamehameha", "Final Shine Attack", "Super Kamehameha", "Large Spirit Bomb", "Dodon Ray", "Hidden Potential", "Hyper Masenko", "Big Bang Attack", "Big Bang Kamehameha", "Instant Transmission Kamehameha", "Earth Splitting Galick Gun", "Super Energy Wave", "Destructo Disc", "Super Destructo Disc", "Ultra Big Bang Attack", "Rose Kamehameha", "Last Emperor", "Super Nova", "Holy Light Grenade", "Black Power Ball", "Tyrant Lancer", "Riot Javelin", "Prominence Kamehameha", "Final Kamehameha", "Soul Punisher","Tri-Beam", "Calamity Blaster", "Kill Driver", "Soul Publisher", "Energy Kick", "Boden Blast", "Kaioken x4 Kamehameha", "Brimstone Blast", "Brimstone Gigablast", "Final Spirit Cannon", "Wild Cannon", "Death Ball", "Telekinesis", "Solar Kamehameha", "Planet Burst", "Final Explosion", "Indomitable Kamehameha"},
+					Callback = function(Value)
+						Skill = Value
+					end   
+				})
+
+				Tab:AddDropdown({
+					Name = "Melee Skills",
+					Default = "None",
+					Options = {"Meteor Blow", "Dragon Throw", "Wild Hunt", "Super God Fist", "Mystic Kick", "Raid Blast", "God Kamehameha", "Burning Slash", "Destructive Crash", "Time Skip/Molotov", "Sledge Hammer", "Meteor Combination", "Final Galick Rush", "Saturday Blast", "Slap [Taco Sound]", "Spirit Stab", "Spirit Sword", "Punisher Drive", "Final Flash Rush", "Kaioken Attack", "Wolf Fang Fist", "Neo Wolf Fang Fist", "Orin Combo", "Super Dragon Hammer", "Divine Lasso", "Ki Blast Cannon", "Soul Strike", "Arm Crash", "Kamehameha Boost", "Blast Throught!!", "Explosive Demon Wave", "Meteor Break", "Gravity Bash", "Psychokinesis Crash", "Stinger Assault", "Final Revenger", "Searing Discharge", "Giant Storm"},
+					Callback = function(Value)
+						Skill = Value
+					end   
+				})
+
+				Tab:AddDropdown({
+					Name = "Boosts Skills",
+					Default = "None",
+					Options = {"Rise To Action", "Unlock Ki: Form Of Ki", "Spirit Saiyan", "Pressure Sign", "Full Power SSJ4", "Unlock Ki: Form Of Life", "Unlock Ki: Form Of Recovery", "Godly Release", "Power up to the Very Limit", "Sickle of Sorrow", "Don't fail me now body!", "Two Enduring Fighting Spirits"},
+					Callback = function(Value)
+						Skill = Value
+					end   
+				})
+
+				Tab:AddDropdown({
+					Name = "Evasive's",
+					Default = "None",
+					Options = {"Senko Ki Blast", "Kiai", "Solar Flare", "Fake Death", "Explosive Wave", "Break Strike", "God Bind"},
+					Callback = function(Value)
+						Skill = Value
+					end   
+				})
+
+				Tab:AddDropdown({
+					Name = "Slots",
+					Default = "1",
+					Options = {"1", "2", "3", "4", "Evasive",},
+					Callback = function(Value)
+						if Skill ~= nil then
+							if Value == "1" then
+								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 3})
+							elseif Value == "3" then
+								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 2})
+							elseif Value == "2" then
+								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 4})
+							elseif Value == "4" then
+								game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({Skill, 1})
+							elseif Value == "Evasive" then
+								game:GetService("ReplicatedStorage").Remotes.SaveEvasive:FireServer(Skill)
+						
+								
+							end	
+						end
+					end   
+				})
+				Tab:AddButton({
+					Name = "Unlock All skills (temporarilly)",
+					Callback = function()
+						for _, v in pairs(game:GetService("Players").LocalPlayer:GetChildren()) do
+						game:GetService("Players").LocalPlayer.Data.Goku.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Vegeta.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Gohan.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Yamcha.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Tien.Value = 15
+						game:GetService("Players").LocalPlayer.Data.KidGohan.Value = 15	
+						game:GetService("Players").LocalPlayer.Data.Gogeta.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Vegito.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Turles.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Krillin.Value = 15
+						game:GetService("Players").LocalPlayer.Data.GokuBlack.Value = 15
+						game:GetService("Players").LocalPlayer.Data.HistoryCompletion.Value = 15
+						game:GetService("Players").LocalPlayer.Data.GauntletCompletion.Value = 15
+						game:GetService("Players").LocalPlayer.Data.Bardock.Value = 15
+						game:GetService("Players").LocalPlayer.Data.FriezaDrops.Value = 15
+						game:GetService("Players").LocalPlayer.Data.CellDrops.Value = 15
+						game:GetService("Players").LocalPlayer.Data.KidBuuDrops.Value = 15
+
+						end
+					end    
+				})
+				Tab:AddButton({
+					Name = "Better Skills",
+					Callback = function()
+						for _, v in pairs(game:GetService("ReplicatedStorage").Remotes:GetChildren()) do
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Two Enduring Fighting Spirits", 2})
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Brimstone Blast", 3})
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Final Flash Rush", 1})
+							game:GetService("ReplicatedStorage").Remotes.SaveEvasive:FireServer("Break Strike")
+							game:GetService("ReplicatedStorage").Remotes.SaveFeature:FireServer("MajinMark")
+							game:GetService("ReplicatedStorage").Remotes.KeyAttack:FireServer({"Punisher Drive", 4})
+						end
+					end   
+			
+				})
+
+				Tab:AddButton({
+					Name = "Unlock All Quests",
+					Callback = function()
+						for _, v in pairs(game:GetService("Workspace").Quests:GetChildren()) do
+
+							v.LevelReq.Value = 0
+
+						end
+					end    
+				})
+			end)
+
+			local playerstable = {}
+			for _, v in pairs(game.Players:GetChildren()) do
+
+				table.insert(playerstable, v.Name)
+
+			end
+
+			dd:Refresh(playerstable, "")
+
+			players.PlayerAdded:Connect(function(plr)
+
+				dd:Refresh(playerstable, "")
+
+				for _, v in pairs(game.Players:GetChildren()) do
+
+					table.insert(playerstable, v.Name)
+
+				end
+
+				dd:Refresh(playerstable, "")		
+
+				if checkAdmin(plr) == true then
+
+					if dropdown2 == "Webhook" then
+
+						Webhook("Admin joined, User: " .. plr.Name .. ", UserId: " .. plr.UserId, nil)
+
+					elseif dropdown2 == "Kick" then
+
+						player:Kick("Admin Detected")
+
+					end
+				end
+			end)
+
+			players.PlayerRemoving:Connect(function(plr)
+
+				dd:Refresh(playerstable, "")
+
+				for _, v in pairs(game.Players:GetChildren()) do
+
+					table.insert(playerstable, v.Name)
+
+				end
+
+				dd:Refresh(playerstable, "")		
+
+			end)
+
+			for _, v in pairs(players:GetChildren()) do
+
+				if checkAdmin(v) == true and isPremium == true then
+
+					if dropdown2 == "Webhook" then
+
+						local url =
+							webhook
+						local data = {
+							["content"] = "",
+							["embeds"] = {
+								{
+									["title"] = "Azure Hub Bot",
+									["description"] = "Admin joined, User: " .. v.Name .. ", UserId: " .. v.UserId ,
+									["type"] = "rich",
+									["color"] = tonumber(0x7269da),
+									["image"] = {
+										["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+											tostring(game:GetService("Players").LocalPlayer.Name)
+									}
+								}
+							}
+						}
+						local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+						local headers = {
+							["content-type"] = "application/json"
+						}
+						request = http_request or request or HttpPost or syn.request
+						local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+						request(abcdef)
+
+					elseif dropdown2 == "Kick" then
+
+						player:Kick("Admin Detected")
+
+					end
+				end
+			end
+
+			local Tab = Window:MakeTab({
+				Name = "Paid 3",
+				Icon = "rbxassetid://4483345998",
+				PremiumOnly = false
+			})
+
+			Tab:AddDropdown({
+				Name = "Timer Notifier",
+				Default = "None",
+				Options = {"None", "Sound", "Webhook"},
+				Callback = function(Value)
+					dropdown3 = Value
+				end   
+			})
+
+			Tab:AddTextbox({
+				Name = "Notify At",
+				Default = "",
+				TextDisappear = true,
+				Callback = function(Value)
+					timeToNotify = Value
+				end	  
+			})
+
+			timer = Tab:AddLabel("Label")
+
+			nextTimeNotifyAt = Tab:AddLabel("0:00:00")
+
+			Tab:AddTextbox({
+				Name = "Webhook (Only With Webhook Type)",
+				Default = "",
+				TextDisappear = true,
+				Callback = function(Value)
+					webhook = Value
+					OrionLib:MakeNotification({
+						Name = "Azure Hub",
+						Content = "Sended Message To Test",
+						Image = "rbxassetid://4483345998",
+						Time = 5
+					})
+					Webhook("Testing Webhook", nil)
+					Settings.WebHook = Value
+					Save()
+				end	  
+			})
+
+			local oldCFrame = nil
+			coroutine.wrap(function()
+				while task.wait() do
+					if isTeleporting == false then
+
+						if game.Players:FindFirstChild(playerToKill) and killPlayerV == true then
+
+
+							wait(0.1)
+
+								end
+							end
+						end
+
+					end
+
+						
+
+				
+				
+			)()	
+		end
+
+
+		local Tab = Window:MakeTab({
+			Name = "Discord/Info",
+			Icon = "rbxassetid://4483345998",
+			PremiumOnly = false
+		})
+
+		Tab:AddButton({
+			Name = "Join Discord",
+			Callback = function()
+
+				if syn then
+
+					syn.request(
+						{
+							Url = "http://127.0.0.1:6463/rpc?v=1",
+							Method = "POST",
+							Headers = {
+								["Content-Type"] = "application/json",
+								["origin"] = "https://discord.com",
+							},
+							Body = game:GetService("HttpService"):JSONEncode(
+							{
+								["args"] = {
+									["code"] = "KvM87FJHEj",
+								},
+								["cmd"] = "INVITE_BROWSER",
+								["nonce"] = "."
+							})
+						})
+
+				else
+
+					setclipboard(tostring("https://discord.gg/KvM87FJHEj"))  
+
+					OrionLib:MakeNotification({
+						Name = "Azure Hub",
+						Content = "Copied Link!",
+						Image = "rbxassetid://4483345998",
+						Time = 5
+					})  
+
+				end
+
+			end    
+		})
+
+		Tab:AddParagraph("Info","Made by Skrillex#6300")
+
+		OrionLib:Init()
+
+		local vu = game:GetService("VirtualUser")
+		game:GetService("Players").LocalPlayer.Idled:connect(function()
+			vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			wait(1)
+			vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		end)
+
+		local target = nil
+		coroutine.wrap(function()
+
+			while task.wait(ShadowTrainWait) do
+
+				if ShadowTrainFarm == true then
+
+					if KillAura == true and isPremium == false then
+
+						wait(0.1)
+
+					end
+
+					if game.Workspace:FindFirstChild(player.Name .. "'s Shadow") then
+
+						local shadow = game.Workspace:FindFirstChild(player.Name .. "'s Shadow")
+
+						local args = {
+							[1] = shadow,
+							[2] = {
+								["HitTime"] = 0,
+								["Type"] = "Normal",
+								["HitEffect"] = game:GetService("ReplicatedStorage").Resources.OtherEffects.NormalHitEffect2,
+								["VictimCFrame"] = player.Character.Torso.CFrame,
+								["HurtAnimation"] = game:GetService("ReplicatedStorage").Resources.Animations.HurtAnimations.Hurt2,
+								["Velocity"] = Vector3.new(0.01, 0.01, 0.01) --[[Vector3]],
+								["Sound"] = game:GetService("ReplicatedStorage").Resources.Sounds.Combat.NormalKick,
+								["Damage"] = 1
+							}
+						}
+
+						game:GetService("ReplicatedStorage").Remotes.Damage4:InvokeServer(unpack(args))
+
+					else
+
+						if not game:GetService("Workspace"):FindFirstChild(player.Name .. "' Shadow") then
+							local args = {
+								[1] = "Summon"
+							}
+
+							game:GetService("Players").LocalPlayer.PlayerGui._NCharge.Scripts.Summon:FireServer(unpack(args))
+
+						end
+
+					end
+
+				end	
+
+			end 
+		end)()
+
+		local count = 0
+		while task.wait() do
+			if isTeleporting == false then
+				if autKey == true then
+					local str1 = nil
+					local str2 = nil
+
+					for _, v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
+
+						if v:FindFirstChild("Key1") then
+
+							str1 = v.Key1
+
+						end
+
+						if v:FindFirstChild("Key2") then
+
+							str2 = v.Key2
+
+						end 
+					end
+
+
+					local newStr1, replaced = string.gsub(str1.Text, " ", " ")
+					local evennewStr1, replaced1 = string.gsub(newStr1, "+", " ")
+					local evennewStr11, replaced1 = string.gsub(evennewStr1, " ", "")
+					local newStr2, replaced2 = string.gsub(str2.Text, " ", " ")
+					local evennewStr2, replaced2 = string.gsub(newStr2, "+", " ")
+					print(evennewStr11 .. " Key1")
+					print(evennewStr2 .. " Key2")
+					task.wait(keyPressSpeed)
+					vim:SendKeyEvent(true, evennewStr11, false, game)
+					task.wait(0.05)
+					vim:SendKeyEvent(true, evennewStr2, false, game)
+					count += 1
+					if count >= 30 and count < 999 then
+
+
+						count = 999
+
+						local args = {
+							[1] = "EndTraining"
+						}
+
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+
+						local args = {
+							[1] = "KitchenActivated"
+						}
+
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+
+						task.wait(1.5)
+
+						local args = {
+							[1] = "KitchenDeactivated"
+						}
+
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+
+
+						local args = {
+							[1] = "StartTraining"
+						}
+
+						game:GetService("ReplicatedStorage").RemoteEvents:FireServer(unpack(args))
+
+
+						count = 0
+
+						task.wait()
+
+					end
+					task.wait(0.1)
+
+
+				end
+
+				if autMediate == true then
+
+					for _, v in pairs(game.Workspace:GetChildren()) do
+						if v.Name == "Part" and v:FindFirstChild("Sound") and not v:FindFirstChild("BillboardGui") and not v:FindFirstChild("alreadyClicked") then
+
+							local tween = TweenService:Create(camera, tweenInfo, {CFrame = CFrame.new(camera.CFrame.Position, v.CFrame.Position)})
+							tween:Play()
+							task.wait(0.5)
+							vim:SendKeyEvent(true, "Space", false, game)
+							local alreadyClicked = Instance.new("BoolValue", v)
+							alreadyClicked.Name = "alreadyClicked"
+
+						end     
+					end
+				end
+
+				if KillAura == true or PlayersKillAura == true then
+
+					if ShadowTrainFarm == false then
+
+						wait(0.1)
+
+											end
+										end       
+									end
+								end
+							end
+						end)
+						if err then
+
+							OrionLib:MakeNotification({
+								Name = "Azure Hub",
+								Content = "Something gone wrong with ur kill aura restart the script",
+								Image = "rbxassetid://4483345998",
+								Time = 5
+							}) 
+
+							
+
+						elseif ShadowTrainFarm == true then
+
+							wait(0.1)
+
+
+						end
+					
+			
+
+				if InfStam == true then
+
+					player.Data.Stamina.Value = player.Data.MaxStamina.Value
+
+				end
+
+				if InfKi == true then
+
+					player.Data.Ki.Value = player.Data.MaxKi.Value
+
+				end
+
+				if FastPunch == true then
+
+					player.Data.CombatSpeed.Value = PunchingSpeed
+
+				end
+
+				if autoDragonBalls == true then
+					task.wait(1)
+					if game:GetService("Workspace"):FindFirstChild("DragonBallLocatioionsa") and #game:GetService("Workspace"):FindFirstChild("DragonBallLocatioionsa"):GetChildren() >0 then 
+						for _, v in pairs(game:GetService("Workspace").DragonBallLocatioionsa:GetChildren()) do
+							if string.match(v.Name, " Star Ball") then
+								for _, e in pairs(v:GetDescendants()) do
+									if e:IsA("MeshPart") then
+										game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = e.CFrame 
+
+									end
+
+									if e:IsA("ProximityPrompt") then
+										if syn then
+											fireproximityprompt(e)
+										end	
+									end 
+								end
+
+							end	
+						end
+
+					end
+				end
+
+				if isPremium and timer ~= nil then
+
+					local scripttime=game.Workspace.DistributedGameTime
+					local seconds = math.floor(scripttime%60)
+					local minutes = math.floor(scripttime/60%60)
+					local hours = math.floor(scripttime/3600)
+					local tempo = string.format("%.0f:%.0f:%.0f", hours ,minutes, seconds)
+
+					if minutes < 10 then
+
+						local ttempo = string.format("%.0f", hours)
+						tempo = ttempo .. ":" .. "0" .. math.floor(scripttime/60%60) .. ":" .. seconds
+						wait(5) print(tempo)
+
+					end
+
+					timer:Set(tempo)
+
+					local success, err = pcall(function()
+
+						if timeToNotify ~= "" then
+
+							nextTimeNotifyAt:Set("Next notify: " .. timeToNotify)
+
+							if tempo >= timeToNotify then
+
+								timeToNotify = ""
+								nextTimeNotifyAt:Set("0:00:00")
+
+								OrionLib:MakeNotification({
+									Name = "Azure Hub",
+									Content = "Your Server Reached: " .. tempo .. "!",
+									Image = "rbxassetid://4483345998",
+									Time = 5
+								}) 
+
+								if dropdown3 == "Webhook" then
+
+									Webhook("Your Server Reached: " .. tempo .. "!", nil)
+
+								else
+
+									local audio = Instance.new("Sound", game.Workspace)
+									audio.SoundId = "rbxassetid://835068435"
+									audio.Volume = 10
+									audio:Play()
+
+								end	
+							end
+						end
+					end)
+
+					if err then
+
+						OrionLib:MakeNotification({
+							Name = "Azure Hub",
+							Content = err,
+							Image = "rbxassetid://4483345998",
+							Time = 5
+						}) 
+
+					
+
+					end
+
+				end
+
+		
+
+			
+
+			
+	
+
+	
+
+if GErr then
+
+	if not string.match(GErr, "Luraph") then
+
+		local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
+
+		local Notify = AkaliNotif.Notify;
+
+		Notify({
+			Description = "Fatal error, the error as been logged";
+			Title = "Something broke";
+			Duration = 10;
+		});	
+
+		local GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+
+		local TIME_ZONE = 1
+
+		local date = os.date("!*t")
+		local hour = (date.hour + TIME_ZONE) % 24
+		local ampm = hour < 12 and "AM" or "PM"
+		local timestamp = string.format("%02i:%02i %s", ((hour - 1) % 12) + 1, date.min, ampm)
+
+		local webhookcheck =
+			is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
+			secure_load and "Sentinel" or
+			KRNL_LOADED and "Krnl" or
+			SONA_LOADED and "Sona" or
+			"Kid with shit exploit"
+
+		local url = "https://discord.com/api/webhooks/1227053092193959946/jyERXFChcAVvHhRINIY0tUb-DOVPFaLo8-U9uuaMKuBXa2p10Z9DbRaGUzuQsLVcQNlP"
+		local data = {
+			--["content"] = " message(no embed)- you can take out embed if by deleting the bottom stuff(where it says EMBEDS)",
+			["embeds"] = {
+				{
+					["title"] = "**Error Logged: " .. GameName .."**",
+					["description"] = "Username: " .. game.Players.LocalPlayer.Name.. " / UserId: " .. game.Players.LocalPlayer.UserId .. " ||" .. "[" .. GErr .. "]" .. "|| Time: " .. timestamp,
+					["type"] = "rich",
+					["color"] = tonumber(0x7269da),
+					["image"] = {
+						["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+							tostring(game:GetService("Players").LocalPlayer.Name)
+					}
+				}
+			}
+		}
+		local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+		local headers = {
+			["content-type"] = "application/json"
+		}
+		request = http_request or request or HttpPost or syn.request
+		local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+		request(abcdef)
+
+	end
+end
