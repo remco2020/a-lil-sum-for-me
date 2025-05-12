@@ -32,8 +32,7 @@ while true do
 end
 
 -- Re-queue the script itself after teleport
-local url = "https://raw.githubusercontent.com/remco2020/a-lil-sum-for-me/refs/heads/main/a%20infinite%20ki%20and%20stamina.txt"
-queue_on_teleport('loadstring(game:HttpGet("'..url..'", true))()')
+queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/remco2020/a-lil-sum-for-me/refs/heads/main/a%20infinite%20ki%20and%20stamina.txt", true))()')
 ]]
 
 -- Queue the script to run on teleport
