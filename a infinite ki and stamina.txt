@@ -1,13 +1,13 @@
 -- Wait for the game to load (especially useful right after teleport)
-repeat task.wait() until game:IsLoaded()
+repeat task.wait(5) until game:IsLoaded()
 
 -- Send notification immediately
 game:GetService("StarterGui"):SetCore("SendNotification", {
-    Title = "Success",
-    Text = "Infinite Ki Loaded",
+    Title = "Script executed",
+    Text = "YIIPEEE 👍👍",
     Duration = 10
 })
-
+task.wait(5)
 -- The actual script to queue on teleport
 local scriptToQueue = [[
 repeat task.wait() until game:IsLoaded()
