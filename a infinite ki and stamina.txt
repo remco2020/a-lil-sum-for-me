@@ -1,34 +1,43 @@
 -- Wait for the game to load (especially useful right after teleport)
 repeat task.wait() until game:IsLoaded()
 
--- Send notification
+-- Send notification immediately
 game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Success",
-	Text = "Infinite Ki Loaded",
-	Duration = 5
+    Title = "Success",
+    Text = "Infinite Ki Loaded",
+    Duration = 10
 })
 
--- Script to queue on teleport
+-- The actual script to queue on teleport
 local scriptToQueue = [[
 repeat task.wait() until game:IsLoaded()
 
 game:GetService("StarterGui"):SetCore("SendNotification", {
-	Title = "Success",
-	Text = "Infinite Ki Loaded",
-	Duration = 5
+    Title = "Success",
+    Text = "Infinite Ki Loaded",
+    Duration = 5
 })
 
+-- Wait for 5 seconds before re-running the script after teleport
+task.wait(5)
+
 while true do
-	task.wait(0.5)
-	local player = game.Players.LocalPlayer
-	if player and player:FindFirstChild("Data") then
-		player.Data.Ki.Value = player.Data.MaxKi.Value
-		player.Data.Stamina.Value = player.Data.MaxStamina.Value
-		player.Data.Surge.Value = player.Data.SurgeMax.Value
-	end
+    task.wait(0.5)
+    local player = game.Players.LocalPlayer
+    if player and player:FindFirstChild("Data") then
+        player.Data.Ki.Value = player.Data.MaxKi.Value
+        player.Data.Stamina.Value = player.Data.MaxStamina.Value
+        player.Data.Surge.Value = player.Data.SurgeMax.Value
+    end
 end
+
+-- Re-queue the script itself after teleport
+local url = "https://raw.githubusercontent.com/remco2020/a-lil-sum-for-me/refs/heads/main/a%20infinite%20ki%20and%20stamina.txt"
+queue_on_teleport('loadstring(game:HttpGet("'..url..'", true))()')
 ]]
 
-queue_on_teleport([[
-loadstring(game:HttpGet("https://raw.githubusercontent.com/remco2020/a-lil-sum-for-me/refs/heads/main/a%20infinite%20ki%20and%20stamina.txt", true))()
-]])
+-- Queue the script to run on teleport
+queue_on_teleport(scriptToQueue)
+
+-- Optionally, run the script immediately as well
+loadstring(scriptToQueue)()
