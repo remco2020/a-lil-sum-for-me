@@ -1,40 +1,32 @@
-
-repeat task.wait(5) until game:IsLoaded()
+repeat task.wait() until game:IsLoaded()
 
 game:GetService("StarterGui"):SetCore("SendNotification", {
     Title = "Script executed",
     Text = "YIIPEEE 👍👍",
-    Duration = 10
+    Duration = 2
 })
-
-task.wait(5)
-
-local scriptToQueue = [[
-repeat task.wait(5) until game:IsLoaded()
-
+task.wait(2)
 game:GetService("StarterGui"):SetCore("SendNotification", {
     Title = "INFINITY",
     Text = "STAM and KI loaded",
     Duration = 5
 })
 
-task.wait(2)
-
-while true do
-    task.wait(0.5)
-    local player = game.Players.LocalPlayer
-    if player and player:FindFirstChild("Data") then
-        player.Data.Ki.Value = player.Data.MaxKi.Value
-        player.Data.Stamina.Value = player.Data.MaxStamina.Value
-        player.Data.Surge.Value = player.Data.SurgeMax.Value
+local function maintainStats()
+    while true do
+        task.wait(0.5)
+        local player = game.Players.LocalPlayer
+        if player and player:FindFirstChild("Data") then
+            player.Data.Ki.Value = player.Data.MaxKi.Value
+            player.Data.Stamina.Value = player.Data.MaxStamina.Value
+            player.Data.Surge.Value = player.Data.SurgeMax.Value
+            print("Stats replenished.")
+        end
     end
 end
 
-queue_on_teleport([=[
-loadstring(game:HttpGet('https://raw.githubusercontent.com/remco2020/a-lil-sum-for-me/refs/heads/main/a%20infinite%20ki%20and%20stamina.txt', true))()
-]=])
-]]
+coroutine.wrap(maintainStats)()
 
-queue_on_teleport(scriptToQueue)
-
-loadstring(scriptToQueue)()
+queue_on_teleport([[
+loadstring(game:HttpGet("https://raw.githubusercontent.com/remco2020/a-lil-sum-for-me/refs/heads/main/a%20infinite%20ki%20and%20stamina.txt", true))()
+]])
