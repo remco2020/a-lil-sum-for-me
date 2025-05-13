@@ -20,7 +20,6 @@ local function maintainStats()
             player.Data.Ki.Value = player.Data.MaxKi.Value
             player.Data.Stamina.Value = player.Data.MaxStamina.Value
             player.Data.Surge.Value = player.Data.SurgeMax.Value
-            print("Stats replenished.")
         end
     end
 end
