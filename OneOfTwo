@@ -111,7 +111,7 @@ creditLabel.AnchorPoint = Vector2.new(0, 0)
 creditLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 creditLabel.BackgroundTransparency = 0.25
 creditLabel.BorderSizePixel = 0
-creditLabel.Text = "SCRIPT MADE BY haru_the_cat ON DISCORD. PRESS = TO UNLOAD SCRIPT!"
+creditLabel.Text = "SCRIPT MADE BY haru_the_cat ON DISCORD. = TO UNLOAD"
 creditLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
 creditLabel.TextScaled = true
 creditLabel.Font = Enum.Font.GothamBold
