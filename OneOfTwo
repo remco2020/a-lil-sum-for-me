@@ -1,1 +1,244 @@
+-- === SERVICES ===
+local Workspace = game:GetService("Workspace")
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local HttpService = game:GetService("HttpService")
+local LocalPlayer = Players.LocalPlayer
 
+-- === CONFIG ===
+local KEY_URL = "https://raw.githubusercontent.com/remco2020/a-lil-sum-for-me/main/anti%20jailbreaker"
+local WEBHOOK_URL = "https://discord.com/api/webhooks/1451618630805753927/v0LVNbubL6T0GVZbshDdMs85fSKh0FF80jctbbV8W3TRsNf0EFO7-13noFx8jyEMVJUS"
+
+-- === REQUIRE script_key ===
+if typeof(script_key) ~= "string" or script_key == "" then
+    warn("No script_key provided")
+    return
+end
+
+-- === KEY VALIDATION FUNCTION ===
+local function isKeyValid(key)
+    local success, data = pcall(function()
+        return game:HttpGet(KEY_URL)
+    end)
+    if not success then
+        warn("Failed to fetch key list")
+        return false
+    end
+
+    for line in string.gmatch(data, "[^\r\n]+") do
+        if line == key then
+            return true
+        end
+    end
+    return false
+end
+
+-- === LOG KEY USAGE TO DISCORD ===
+local function logKeyUse(key, valid)
+    local payload = {
+        username = "CollisionESP Logger",
+        embeds = { {
+            title = valid and "✅ Key Accepted" or "❌ Invalid Key",
+            color = valid and 65280 or 16711680,
+            fields = {
+                { name = "Username", value = LocalPlayer.Name, inline = true },
+                { name = "UserId", value = tostring(LocalPlayer.UserId), inline = true },
+                { name = "Key", value = key, inline = false },
+                { name = "PlaceId", value = tostring(game.PlaceId), inline = true },
+                { name = "JobId", value = game.JobId, inline = false }
+            },
+            footer = { text = os.date("!%Y-%m-%d %H:%M:%S UTC") }
+        } }
+    }
+
+    local json = HttpService:JSONEncode(payload)
+
+    pcall(function()
+        if syn and syn.request then
+            syn.request({
+                Url = WEBHOOK_URL,
+                Method = "POST",
+                Headers = { ["Content-Type"] = "application/json" },
+                Body = json
+            })
+        elseif http_request then
+            http_request({
+                Url = WEBHOOK_URL,
+                Method = "POST",
+                Headers = { ["Content-Type"] = "application/json" },
+                Body = json
+            })
+        end
+    end)
+end
+
+-- === CHECK KEY BEFORE CONTINUING ===
+if not isKeyValid(script_key) then
+    logKeyUse(script_key, false) -- log invalid key usage
+    warn("Invalid script_key")
+    return
+end
+
+logKeyUse(script_key, true) -- log valid key usage
+
+-- === CREDIT GUI ===
+local playerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+local creditGui = Instance.new("ScreenGui")
+creditGui.Name = "CollisionESP_Credit"
+creditGui.ResetOnSpawn = false
+creditGui.Parent = playerGui
+
+local creditLabel = Instance.new("TextLabel")
+creditLabel.Size = UDim2.new(0, 420, 0, 40)
+creditLabel.Position = UDim2.new(0.5, -210, 1, -55)
+creditLabel.AnchorPoint = Vector2.new(0, 0)
+creditLabel.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+creditLabel.BackgroundTransparency = 0.25
+creditLabel.BorderSizePixel = 0
+creditLabel.Text = "SCRIPT MADE BY haru_the_cat ON DISCORD."
+creditLabel.TextColor3 = Color3.fromRGB(255, 80, 80)
+creditLabel.TextScaled = true
+creditLabel.Font = Enum.Font.GothamBold
+creditLabel.TextStrokeTransparency = 0.7
+creditLabel.Parent = creditGui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 10)
+corner.Parent = creditLabel
+
+-- === ESP LOGIC ===
+local partsWithESP = {}  -- part -> TextLabel
+local partsList = {}     -- ordered list for incremental distance updates
+local PROXIMITY_RADIUS = 20
+local BATCH_SIZE = 8
+local updateIndex = 1
+
+local heartbeatConn
+local descendantConn
+local inputConn
+
+local function cleanup()
+    for part, label in pairs(partsWithESP) do
+        if label and label.Parent then label.Parent:Destroy() end
+        local box = part:FindFirstChild("ESP_SelectionBox")
+        if box then box:Destroy() end
+    end
+    partsWithESP = {}
+    partsList = {}
+end
+
+local function isNearby(part)
+    local partPos = part.Position
+    for existingPart, label in pairs(partsWithESP) do
+        if existingPart and existingPart.Parent and label then
+            if (existingPart.Position - partPos).Magnitude < PROXIMITY_RADIUS then
+                return true
+            end
+        end
+    end
+    return false
+end
+
+local function addESP(part)
+    if partsWithESP[part] then return end
+    if not part or not part.Parent then return end
+
+    local box = Instance.new("SelectionBox")
+    box.Name = "ESP_SelectionBox"
+    box.Adornee = part
+    box.LineThickness = 0.02
+    box.SurfaceTransparency = 1
+    box.Color3 = Color3.fromRGB(255, 50, 50)
+    box.Parent = part
+
+    if not isNearby(part) then
+        local billboard = Instance.new("BillboardGui")
+        billboard.Name = "ESP_Billboard"
+        billboard.Adornee = part
+        billboard.AlwaysOnTop = true
+        billboard.Size = UDim2.new(0, 100, 0, 20)
+        billboard.StudsOffset = Vector3.new(0, (part.Size.Y / 2) + 2, 0)
+        billboard.Parent = part
+
+        local label = Instance.new("TextLabel")
+        label.Name = "ESP_Label"
+        label.Size = UDim2.new(1, 0, 1, 0)
+        label.BackgroundTransparency = 1
+        label.Text = ""
+        label.TextScaled = true
+        label.Font = Enum.Font.GothamBold
+        label.TextColor3 = Color3.fromRGB(255, 0, 0)
+        label.TextStrokeTransparency = 0.6
+        label.Parent = billboard
+
+        partsWithESP[part] = label
+        table.insert(partsList, part)
+    else
+        partsWithESP[part] = nil
+    end
+
+    part.AncestryChanged:Connect(function(_, parent)
+        if not parent then
+            local label = partsWithESP[part]
+            if label and label.Parent then label.Parent:Destroy() end
+            local box = part:FindFirstChild("ESP_SelectionBox")
+            if box then box:Destroy() end
+            partsWithESP[part] = nil
+            for i, p in ipairs(partsList) do
+                if p == part then table.remove(partsList, i) break end
+            end
+        end
+    end)
+end
+
+-- INITIAL SCAN
+for _, v in ipairs(Workspace:GetDescendants()) do
+    if v:IsA("BasePart") and v.Name:lower() == "collision" then
+        addESP(v)
+    end
+end
+
+-- NEW PART DETECTION
+descendantConn = Workspace.DescendantAdded:Connect(function(v)
+    if v:IsA("BasePart") and v.Name:lower() == "collision" then
+        addESP(v)
+    end
+end)
+
+-- DISTANCE UPDATES
+heartbeatConn = RunService.Heartbeat:Connect(function()
+    if #partsList == 0 then return end
+    local root = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if not root then return end
+
+    for _ = 1, BATCH_SIZE do
+        if updateIndex > #partsList then
+            updateIndex = 1
+        end
+        local part = partsList[updateIndex]
+        local label = partsWithESP[part]
+        if part and part.Parent and label then
+            local dist = (root.Position - part.Position).Magnitude
+            label.Text = string.format("%.1f studs", dist)
+        end
+        updateIndex = updateIndex + 1
+    end
+end)
+
+-- INPUT TO FULLY BREAK SCRIPT
+inputConn = UserInputService.InputBegan:Connect(function(input, processed)
+    if processed then return end
+    if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == Enum.KeyCode.Equals then
+        if heartbeatConn then heartbeatConn:Disconnect() end
+        if descendantConn then descendantConn:Disconnect() end
+        if inputConn then inputConn:Disconnect() end
+        cleanup()
+        partsWithESP = nil
+        partsList = nil
+        heartbeatConn = nil
+        descendantConn = nil
+        inputConn = nil
+    end
+end)
