@@ -88,13 +88,13 @@ end
 
 -- === CHECK KEY BEFORE CONTINUING ===
 if not isKeyValid(script_key) then
-    logKeyUse(script_key, false) -- log invalid key usage
-    notify("DB esp", "Failed! Wrong key!", 5) -- 5-second notification
+    logKeyUse(script_key, false)
+    notify("DB esp", "Failed! Wrong key!", 5)
     return
 end
 
-logKeyUse(script_key, true) -- log valid key usage
-notify("DB esp", "Successfully executed!", 5) -- 5-second notification
+logKeyUse(script_key, true)
+notify("DB esp", "Successfully executed!", 5)
 
 -- === CREDIT GUI ===
 local playerGui = LocalPlayer:WaitForChild("PlayerGui")
@@ -133,12 +133,29 @@ local heartbeatConn
 local descendantConn
 local inputConn
 
+-- Store part-specific connections to disconnect them on cleanup
+local partConnections = {}
+
 local function cleanup()
+    -- Destroy all ESP and connections
     for part, label in pairs(partsWithESP) do
         if label and label.Parent then label.Parent:Destroy() end
         local box = part:FindFirstChild("ESP_SelectionBox")
         if box then box:Destroy() end
+
+        if partConnections[part] then
+            for _, conn in ipairs(partConnections[part]) do
+                conn:Disconnect()
+            end
+            partConnections[part] = nil
+        end
     end
+
+    -- Destroy credit GUI
+    if creditGui and creditGui.Parent then
+        creditGui:Destroy()
+    end
+
     partsWithESP = {}
     partsList = {}
 end
@@ -159,6 +176,7 @@ local function addESP(part)
     if partsWithESP[part] then return end
     if not part or not part.Parent then return end
 
+    -- SelectionBox
     local box = Instance.new("SelectionBox")
     box.Name = "ESP_SelectionBox"
     box.Adornee = part
@@ -167,6 +185,7 @@ local function addESP(part)
     box.Color3 = Color3.fromRGB(255, 50, 50)
     box.Parent = part
 
+    -- Billboard
     if not isNearby(part) then
         local billboard = Instance.new("BillboardGui")
         billboard.Name = "ESP_Billboard"
@@ -193,18 +212,29 @@ local function addESP(part)
         partsWithESP[part] = nil
     end
 
-    part.AncestryChanged:Connect(function(_, parent)
+    -- AncestryChanged connection
+    local conn = part.AncestryChanged:Connect(function(_, parent)
         if not parent then
-            local label = partsWithESP[part]
-            if label and label.Parent then label.Parent:Destroy() end
+            if partsWithESP[part] and partsWithESP[part].Parent then
+                partsWithESP[part].Parent:Destroy()
+            end
             local box = part:FindFirstChild("ESP_SelectionBox")
             if box then box:Destroy() end
             partsWithESP[part] = nil
             for i, p in ipairs(partsList) do
                 if p == part then table.remove(partsList, i) break end
             end
+            if partConnections[part] then
+                for _, c in ipairs(partConnections[part]) do
+                    c:Disconnect()
+                end
+                partConnections[part] = nil
+            end
         end
     end)
+
+    partConnections[part] = partConnections[part] or {}
+    table.insert(partConnections[part], conn)
 end
 
 -- INITIAL SCAN
@@ -249,11 +279,10 @@ inputConn = UserInputService.InputBegan:Connect(function(input, processed)
         if descendantConn then descendantConn:Disconnect() end
         if inputConn then inputConn:Disconnect() end
         cleanup()
-        partsWithESP = nil
-        partsList = nil
         heartbeatConn = nil
         descendantConn = nil
         inputConn = nil
-        notify("DB esp", "script fully unloaded.", 4)
+        partConnections = nil
+        notify("DB esp", "Script fully unloaded.", 4)
     end
 end)
