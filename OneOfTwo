@@ -154,6 +154,7 @@ local function cleanup()
     -- Destroy credit GUI
     if creditGui and creditGui.Parent then
         creditGui:Destroy()
+        creditGui = nil
     end
 
     partsWithESP = {}
@@ -282,7 +283,7 @@ inputConn = UserInputService.InputBegan:Connect(function(input, processed)
         heartbeatConn = nil
         descendantConn = nil
         inputConn = nil
-        partConnections = nil
+        partConnections = {}
         notify("DB esp", "Script fully unloaded.", 4)
     end
 end)
